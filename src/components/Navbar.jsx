@@ -25,6 +25,8 @@ const Navbar = () => {
     location.pathname === '/services' ||
     location.pathname.startsWith('/services/') ||
     location.pathname === '/products' ||
+    location.pathname === '/blog' ||
+    location.pathname.startsWith('/blog/') ||
     location.pathname === '/training-modules' ||
     location.pathname === '/training-delivery' ||
     location.pathname === '/immersive-learning' ||
@@ -55,6 +57,7 @@ const Navbar = () => {
   const isPortfolio = location.pathname === '/portfolio';
   const isServices = location.pathname === '/services';
   const isProducts = location.pathname === '/products';
+  const isBlog = location.pathname === '/blog' || location.pathname.startsWith('/blog/');
   const isTrainingModules = location.pathname === '/training-modules';
   const isTrainingDelivery = location.pathname === '/training-delivery';
   const isTraining = isTrainingModules || isTrainingDelivery;
@@ -149,6 +152,14 @@ const Navbar = () => {
               aria-current={isProducts ? 'page' : undefined}
             >
               Products
+            </Link>
+
+            <Link
+              to="/blog"
+              className={navClass(isBlog)}
+              aria-current={isBlog ? 'page' : undefined}
+            >
+              Blogs
             </Link>
 
             {/* Training Dropdown
@@ -364,6 +375,15 @@ const Navbar = () => {
             aria-current={isProducts ? 'page' : undefined}
           >
             Products
+          </Link>
+
+          <Link
+            to="/blog"
+            onClick={() => setMobileMenuOpen(false)}
+            className={mobileNavClass(isBlog)}
+            aria-current={isBlog ? 'page' : undefined}
+          >
+            Blogs
           </Link>
 
           {/* Mobile Training Dropdown

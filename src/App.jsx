@@ -9,6 +9,8 @@ import IndustryDetail from './pages/IndustryDetail';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Products from './pages/Products';
+import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 import TrainingModules from './pages/TrainingModules';
 import TrainingDelivery from './pages/TrainingDelivery';
 import ImmersiveLearning from './pages/ImmersiveLearning';
@@ -33,6 +35,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/training-modules" element={<TrainingModules />} />
         <Route path="/training-delivery" element={<TrainingDelivery />} />
         <Route path="/immersive-learning" element={<ImmersiveLearning />} />
