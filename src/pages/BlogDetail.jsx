@@ -24,6 +24,8 @@ const BlogDetail = () => {
     document.title = post.metaTitle || post.title;
     setMeta('description', post.metaDescription || post.excerpt);
     setMeta('keywords', post.metaKeywords);
+    setMeta('og:title', post.metaTitle || post.title);
+    setMeta('og:description', post.metaDescription || post.excerpt);
     return () => {
       document.title = previousTitle;
     };
@@ -66,11 +68,11 @@ const BlogDetail = () => {
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <img
           src={post.image}
-          alt={post.title}
+          alt={post.imageAlt || post.title}
           className="mb-10 w-full rounded-2xl"
         />
         <div className="space-y-5 text-base leading-relaxed text-slate-600">
-          {post.body.map((block) => {
+          {post.body.map((block, index) => {
             if (typeof block === 'string') {
               return <p key={block.slice(0, 48)}>{block}</p>;
             }
@@ -100,10 +102,38 @@ const BlogDetail = () => {
                 </ul>
               );
             }
+            if (block.type === 'faq') {
+              return (
+                <dl key="faq" className="space-y-5">
+                  {block.items.map((item) => (
+                    <div key={item.q}>
+                      <dt className="font-semibold text-slate-900">{item.q}</dt>
+                      <dd className="mt-1.5">{item.a}</dd>
+                    </div>
+                  ))}
+                </dl>
+              );
+            }
+            if (block.type === 'links') {
+              return (
+                <ul key="links" className="flex flex-wrap gap-2">
+                  {block.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        to={item.href}
+                        className="inline-flex rounded-full bg-orange-50 px-3 py-1.5 text-sm font-semibold text-orange-600 ring-1 ring-orange-100 hover:bg-orange-100"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
             if (block.type === 'cta') {
               return (
                 <Link
-                  key="cta"
+                  key={`cta-${index}`}
                   to="/contact"
                   className="mt-2 inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-400"
                 >
