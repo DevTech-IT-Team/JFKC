@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Play, X } from 'lucide-react';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 import { industries } from '../data/industries';
 
 const Portfolio = () => {
@@ -9,6 +11,7 @@ const Portfolio = () => {
 
   return (
     <main className="min-h-screen bg-slate-100 font-[family-name:var(--font-display)]">
+      <SEO {...seo.portfolio} />
       {/* Portfolio hero — shorter banner */}
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pb-20">
         <div

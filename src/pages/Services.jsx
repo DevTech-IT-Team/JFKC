@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 import { services } from '../data/services';
 
 const AUTO_MS = 4500;
@@ -31,6 +33,7 @@ const Services = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 font-[family-name:var(--font-display)]">
+      <SEO {...seo.services} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-12 sm:pt-32 sm:pb-14">
         <div

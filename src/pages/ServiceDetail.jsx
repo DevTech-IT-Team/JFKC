@@ -3,6 +3,8 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getServiceBySlug, services } from '../data/services';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { getServiceSeo } from '../data/seo';
 
 const CapabilityFlow = ({ items }) => {
   const count = items.length;
@@ -119,6 +121,7 @@ const CapabilityFlow = ({ items }) => {
 const ServiceDetail = () => {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
+  const metadata = getServiceSeo(slug);
 
   useEffect(() => {
     if (!service) return undefined;
@@ -137,6 +140,7 @@ const ServiceDetail = () => {
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)] text-slate-800">
+      <SEO {...metadata} />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-16 sm:pt-32 sm:pb-20">
         <img
           src={service.image}

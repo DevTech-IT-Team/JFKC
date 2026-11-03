@@ -3,10 +3,13 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Play } from 'lucide-react';
 import { getIndustryBySlug, industries } from '../data/industries';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { getIndustrySeo } from '../data/seo';
 
 const IndustryDetail = () => {
   const { slug } = useParams();
   const industry = getIndustryBySlug(slug);
+  const metadata = getIndustrySeo(slug);
 
   if (!industry) {
     return <Navigate to="/portfolio" replace />;
@@ -16,6 +19,7 @@ const IndustryDetail = () => {
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
+      <SEO {...metadata} />
       {/* Hero with image backdrop */}
       <section className="relative min-h-[52svh] overflow-hidden bg-[#0c1220] pt-28 sm:min-h-[56svh] sm:pt-32">
         <img

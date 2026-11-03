@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import { blogs } from '../data/blogs';
+import { seo } from '../data/seo';
 
 const Blog = () => {
   const featured = blogs[0];
@@ -9,6 +11,7 @@ const Blog = () => {
 
   return (
     <main className="min-h-screen bg-slate-50 font-[family-name:var(--font-display)]">
+      <SEO {...seo.blog} />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.22),transparent_55%)]"

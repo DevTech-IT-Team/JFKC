@@ -9,6 +9,8 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 import athenaLmsImage from '../assets/athena_dash.png';
 import ebookImage from '../assets/ebook.png';
 import webstudioImage from '../assets/webstudio.png';
@@ -141,6 +143,7 @@ const ProductCard = ({ item, index }) => {
 const Products = () => {
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
+      <SEO {...seo.products} />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pb-20">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.18),transparent_55%)]"

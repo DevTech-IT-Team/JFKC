@@ -5,10 +5,13 @@ import SetUsApart from '../components/Home/SetUsApart';
 import WhyChooseUs from '../components/Home/WhyChooseUs';
 import VissionMission from '../components/Home/VissionMission';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 
 const Home = () => {
   return (
     <>
+      <SEO {...seo.home} />
       <Hero />
       <About />
       <WhoWEAre />

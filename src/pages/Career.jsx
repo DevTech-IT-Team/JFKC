@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Users, Lightbulb, Rocket } from 'lucide-react';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 
 const highlights = [
   {
@@ -29,6 +31,7 @@ const highlights = [
 const Career = () => {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-100 via-orange-50 to-slate-50 font-[family-name:var(--font-display)]">
+      <SEO {...seo.career} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pb-24">
         <div

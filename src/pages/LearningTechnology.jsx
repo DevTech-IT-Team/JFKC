@@ -9,6 +9,8 @@ import {
   PenTool,
 } from 'lucide-react';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
+import { seo } from '../data/seo';
 
 const topics = [
   {
@@ -71,6 +73,7 @@ const LearningTechnology = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-100 via-orange-50 to-slate-50 font-[family-name:var(--font-display)]">
+      <SEO {...seo['learning-technology']} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pb-20">
         <div
