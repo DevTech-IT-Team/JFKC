@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -27,22 +27,57 @@ const contactDetails = [
 const MAP_EMBED =
   'https://maps.google.com/maps?q=Omaxe+Square,+Jasola+District+Centre,+New+Delhi-25&z=16&output=embed';
 
-const FORM_ID = 'nIfs5MnI334Oy6we6R4X';
-const FORM_SRC = `https://api.wonderengine.ai/widget/form/${FORM_ID}`;
+const CONTACT_SCRIPT_URL = import.meta.env.VITE_CONTACT_SCRIPT_URL;
 
 const Contact = () => {
-  useEffect(() => {
-    const scriptId = 'wonderengine-form-embed';
-    if (document.getElementById(scriptId)) return undefined;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-    const script = document.createElement('script');
-    script.id = scriptId;
-    script.src = 'https://api.wonderengine.ai/js/form_embed.js';
-    script.async = true;
-    document.body.appendChild(script);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    return undefined;
-  }, []);
+    if (!CONTACT_SCRIPT_URL) {
+      console.error('VITE_CONTACT_SCRIPT_URL is not configured.');
+      setSubmitStatus({
+        type: 'error',
+        message: 'The contact form is temporarily unavailable. Please contact us by phone or email.',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      await fetch(CONTACT_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams({
+          name: String(formData.get('name') || ''),
+          phone: String(formData.get('phone') || ''),
+          email: String(formData.get('email') || ''),
+          message: String(formData.get('message') || ''),
+        }),
+      });
+
+      setSubmitStatus({
+        type: 'sent',
+        message:
+          'Submitted.',
+      });
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
+      setSubmitStatus({
+        type: 'error',
+        message:
+          'Not submitted. Please try again or contact us by phone or email.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-100 via-orange-50 to-slate-50 font-[family-name:var(--font-display)]">
@@ -122,26 +157,112 @@ const Contact = () => {
                 Share a few details and we&apos;ll get back to you.
               </p>
 
-              <div className="wonderengine-form mt-5 overflow-hidden rounded-2xl bg-white/80 ring-1 ring-orange-100">
-                <iframe
-                  src={FORM_SRC}
-                  id={`inline-${FORM_ID}`}
-                  title="JF Knowledge Centre contact form"
-                  className="block w-full border-0"
-                  style={{ minHeight: 560, height: 560 }}
-                  data-layout="{id:'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="Contact"
-                  data-height="560"
-                  data-layout-iframe-id={`inline-${FORM_ID}`}
-                  data-form-id={FORM_ID}
-                />
-              </div>
+              <form
+                onSubmit={handleSubmit}
+                className="mt-5 space-y-5 rounded-2xl bg-white/80 p-5 ring-1 ring-orange-100 sm:p-6"
+              >
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="mb-2 block text-sm font-semibold text-slate-700"
+                  >
+                    Name <span className="text-orange-600">*</span>
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Enter your first name"
+                    required
+                    maxLength={200}
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 text-base text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-phone"
+                    className="mb-2 block text-sm font-semibold text-slate-700"
+                  >
+                    Phone <span className="text-orange-600">*</span>
+                  </label>
+                  <input
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="+1 (555) 000-0000"
+                    required
+                    maxLength={50}
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 text-base text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="mb-2 block text-sm font-semibold text-slate-700"
+                  >
+                    Email <span className="text-orange-600">*</span>
+                  </label>
+                  <div className="relative">
+                    <Mail
+                      className="pointer-events-none absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-slate-400"
+                      aria-hidden="true"
+                    />
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="your@email.com"
+                      required
+                      maxLength={254}
+                      className="w-full rounded-lg border border-slate-300 bg-white py-3 pr-3 pl-11 text-base text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="mb-2 block text-sm font-semibold text-slate-700"
+                  >
+                    Enter Your Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="Enter your text"
+                    rows={4}
+                    maxLength={5000}
+                    className="w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-3 text-base text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg bg-orange-500 px-4 py-3.5 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {isSubmitting ? 'Sending…' : 'Submit'}
+                </button>
+
+                {submitStatus && (
+                  <p
+                    role={submitStatus.type === 'error' ? 'alert' : 'status'}
+                    aria-live="polite"
+                    className={`text-sm leading-relaxed ${
+                      submitStatus.type === 'error'
+                        ? 'text-red-700'
+                        : 'text-green-700'
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </p>
+                )}
+              </form>
             </div>
           </div>
         </div>
