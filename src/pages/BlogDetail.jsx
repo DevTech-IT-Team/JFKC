@@ -14,6 +14,60 @@ const setMeta = (name, content) => {
   element.setAttribute('content', content);
 };
 
+const renderFormattedText = (text) => {
+  if (typeof text !== 'string') return text;
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  if (!linkRegex.test(text)) return text;
+
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  linkRegex.lastIndex = 0;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const label = match[1];
+    const href = match[2];
+    const isInternal =
+      href.startsWith('/') || href.startsWith('https://jfknowledge.com');
+    const toPath = href.startsWith('https://jfknowledge.com')
+      ? href.replace('https://jfknowledge.com', '') || '/'
+      : href;
+
+    if (isInternal) {
+      parts.push(
+        <Link
+          key={`${href}-${match.index}`}
+          to={toPath}
+          className="font-medium text-orange-600 underline-offset-2 hover:underline"
+        >
+          {label}
+        </Link>
+      );
+    } else {
+      parts.push(
+        <a
+          key={`${href}-${match.index}`}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium text-orange-600 underline-offset-2 hover:underline"
+        >
+          {label}
+        </a>
+      );
+    }
+    lastIndex = linkRegex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts;
+};
+
 const BlogDetail = () => {
   const { slug } = useParams();
   const post = getBlogBySlug(slug);
@@ -74,12 +128,12 @@ const BlogDetail = () => {
         <div className="space-y-5 text-base leading-relaxed text-slate-600">
           {post.body.map((block, index) => {
             if (typeof block === 'string') {
-              return <p key={block.slice(0, 48)}>{block}</p>;
+              return <p key={`str-${index}`}>{renderFormattedText(block)}</p>;
             }
             if (block.type === 'h2') {
               return (
                 <h2
-                  key={block.text}
+                  key={`h2-${index}`}
                   className="pt-4 text-2xl tracking-tight text-slate-900"
                 >
                   {block.text}
@@ -88,23 +142,23 @@ const BlogDetail = () => {
             }
             if (block.type === 'h3') {
               return (
-                <h3 key={block.text} className="pt-2 text-lg font-semibold text-slate-900">
+                <h3 key={`h3-${index}`} className="pt-2 text-lg font-semibold text-slate-900">
                   {block.text}
                 </h3>
               );
             }
             if (block.type === 'ul') {
               return (
-                <ul key={block.items[0]} className="list-disc space-y-2 pl-5">
-                  {block.items.map((item) => (
-                    <li key={item}>{item}</li>
+                <ul key={`ul-${index}`} className="list-disc space-y-2 pl-5">
+                  {block.items.map((item, itemIdx) => (
+                    <li key={`item-${index}-${itemIdx}`}>{renderFormattedText(item)}</li>
                   ))}
                 </ul>
               );
             }
             if (block.type === 'table') {
               return (
-                <div key={block.headers.join('-')} className="overflow-x-auto">
+                <div key={`table-${index}`} className="overflow-x-auto">
                   <table className="w-full min-w-[640px] border-collapse overflow-hidden rounded-2xl text-sm">
                     <thead>
                       <tr className="bg-slate-900 text-left text-white">
@@ -116,11 +170,11 @@ const BlogDetail = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {block.rows.map((row) => (
-                        <tr key={row[0]} className="odd:bg-slate-50 even:bg-white">
+                      {block.rows.map((row, rowIdx) => (
+                        <tr key={`row-${index}-${rowIdx}`} className="odd:bg-slate-50 even:bg-white">
                           {row.map((cell, cellIndex) => (
                             <td
-                              key={`${row[0]}-${cellIndex}`}
+                              key={`cell-${index}-${rowIdx}-${cellIndex}`}
                               className="border-t border-slate-200 px-4 py-3 align-top text-slate-600"
                             >
                               {cell}
@@ -135,11 +189,11 @@ const BlogDetail = () => {
             }
             if (block.type === 'faq') {
               return (
-                <dl key="faq" className="space-y-5">
-                  {block.items.map((item) => (
-                    <div key={item.q}>
+                <dl key={`faq-${index}`} className="space-y-5">
+                  {block.items.map((item, itemIdx) => (
+                    <div key={`faq-item-${index}-${itemIdx}`}>
                       <dt className="font-semibold text-slate-900">{item.q}</dt>
-                      <dd className="mt-1.5">{item.a}</dd>
+                      <dd className="mt-1.5">{renderFormattedText(item.a)}</dd>
                     </div>
                   ))}
                 </dl>
@@ -147,7 +201,7 @@ const BlogDetail = () => {
             }
             if (block.type === 'links') {
               return (
-                <ul key="links" className="flex flex-wrap gap-2">
+                <ul key={`links-${index}`} className="flex flex-wrap gap-2">
                   {block.items.map((item) => (
                     <li key={item.href}>
                       <Link
@@ -162,13 +216,14 @@ const BlogDetail = () => {
               );
             }
             if (block.type === 'cta') {
+              const ctaTarget = block.href || post.ctaLink || '/contact';
               return (
                 <Link
                   key={`cta-${index}`}
-                  to="/contact"
+                  to={ctaTarget}
                   className="mt-2 inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-400"
                 >
-                  {post.cta || 'Schedule a consultation'}
+                  {block.label || post.cta || 'Schedule a consultation'}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               );
@@ -176,16 +231,16 @@ const BlogDetail = () => {
             if (block.type === 'note') {
               return (
                 <p
-                  key={block.text.slice(0, 40)}
+                  key={`note-${index}`}
                   className="rounded-2xl bg-slate-50 px-5 py-4 text-sm text-slate-500 ring-1 ring-slate-200"
                 >
-                  {block.text}
+                  {renderFormattedText(block.text)}
                 </p>
               );
             }
             if (block.type === 'references') {
               return (
-                <div key="references" className="pt-4">
+                <div key={`references-${index}`} className="pt-4">
                   <h2 className="text-2xl tracking-tight text-slate-900">References</h2>
                   <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm">
                     {block.items.map((item) => (
@@ -204,7 +259,7 @@ const BlogDetail = () => {
                 </div>
               );
             }
-            return <p key={block.text.slice(0, 48)}>{block.text}</p>;
+            return <p key={`p-${index}`}>{renderFormattedText(block.text)}</p>;
           })}
         </div>
 
