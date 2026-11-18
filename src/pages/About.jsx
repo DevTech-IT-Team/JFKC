@@ -56,8 +56,7 @@ const About = () => {
             About us
           </p>
           <h1 className="max-w-3xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem] lg:leading-[1.12]">
-            Choose The Best{' '}
-            <span className="text-orange-400">E-Learning</span> Company
+            About <span className="text-orange-400">JF Knowledge Centre</span>
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
             Welcome to JF Knowledge Centre (JFKC), where creativity meets learning in

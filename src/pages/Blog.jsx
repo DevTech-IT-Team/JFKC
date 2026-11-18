@@ -19,7 +19,7 @@ const Blog = () => {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="max-w-4xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
-            The JFKC <span className="text-orange-400">Journal</span>
+            The JFKC <span className="text-orange-400">Journal:</span> eLearning and Learning Design
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
             Notes on learning design, delivery, talent, and the industries we build for —

@@ -30,8 +30,7 @@ const Terms = () => {
             Terms &amp; Conditions
           </p>
           <h1 className="max-w-3xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            Guidelines for a seamless{' '}
-            <span className="text-orange-400">partnership</span>
+            Terms and <span className="text-orange-400">Conditions</span>
           </h1>
         </div>
       </section>

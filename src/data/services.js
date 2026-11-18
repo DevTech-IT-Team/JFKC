@@ -15,7 +15,7 @@ export const services = [
     short: 'Content & Design',
     pageTitle: 'Content Design & Instructional Design Services | ILT, VILT & E-Learning',
     text: 'We create and deliver high-impact learning and content for technical and non-technical teams, from strategy and design through delivery.',
-    headline: 'Content That People Actually Finish and Apply',
+    headline: 'Instructional Design and Content Design Services',
     lead: 'Most training content is forgettable. Ours isn’t.',
     intro: [
       'At JF Knowledge Centre, we design and develop learning experiences that capture attention, improve retention, and drive real behaviour change. Whether you need Instructor-Led Training, Virtual Instructor-Led Training, e-learning modules, or fully blended programmes, our team turns complex knowledge into clear, engaging, and measurable learning.',
@@ -74,7 +74,7 @@ export const services = [
     short: 'Talent',
     pageTitle: 'Recruitment, Staffing & Staff Augmentation Services',
     text: 'We help organisations build and scale teams through recruitment, staffing, and staff augmentation, with flexible models that keep quality and cultural fit.',
-    headline: 'The Right Talent. At the Right Time. Without the Hiring Headache.',
+    headline: 'Recruitment and Staff Augmentation Services',
     lead: 'Hiring the wrong person is expensive. Hiring slowly is even more costly.',
     intro: [
       'JF Knowledge Centre helps organisations find, screen, and onboard skilled professionals quickly through recruitment, staffing, and staff augmentation. Whether you need permanent employees, contract resources, or a temporary team extension, we deliver pre-vetted talent that fits the role and your culture.',
@@ -118,7 +118,7 @@ export const services = [
     short: 'IT & AMC',
     pageTitle: 'IT AMC & Asset Management Services | Laptops, Hardware & Website Support',
     text: 'We manage and support technology infrastructure — AMC, devices, software, and website maintenance — so teams can focus on core work.',
-    headline: 'Technology That Works. Support You Can Rely On.',
+    headline: 'IT AMC and IT Asset Management Services',
     lead: 'When systems fail, productivity stops. When support is slow, frustration grows.',
     intro: [
       'We provide IT asset management and Annual Maintenance Contract (AMC) services so your hardware, software, and websites stay reliable. From laptop provisioning to preventive maintenance and website support, we take care of the technology so your team can focus on work that matters.',
@@ -163,7 +163,7 @@ export const services = [
     short: 'CPA',
     pageTitle: 'Bookkeeping & Accounting Services | Professional CPA Support',
     text: 'Professional bookkeeping and accounting support for day-to-day records, processes, and compliance-oriented financial clarity.',
-    headline: 'Clean Books. Clear Decisions. Complete Confidence.',
+    headline: 'Bookkeeping and Accounting Services',
     lead: 'Financial clarity is not optional — it is essential for growth.',
     intro: [
       'Our bookkeeping and accounting services give business owners accurate records, timely reports, and the confidence to make better decisions. We handle the numbers with precision so you can focus on running and scaling your organisation.',
@@ -206,7 +206,7 @@ export const services = [
     short: 'Data & Language',
     pageTitle: 'Data Annotation, Translation & Localization Services',
     text: 'Data annotation, translation, and localization that prepare high-quality, culturally adapted, machine-ready content and datasets.',
-    headline: 'Accurate Data. Authentic Language. Global Readiness.',
+    headline: 'eLearning Translation and Localization Services',
     lead: 'AI models are only as good as the data they learn from. Global content only works when it feels local.',
     intro: [
       'We provide data annotation, professional translation, and cultural localization that help organisations build better AI systems and communicate effectively across markets.',
@@ -249,7 +249,7 @@ export const services = [
     short: 'Digital Marketing',
     pageTitle: 'Digital Marketing Services | SEO, SMO & Performance Growth',
     text: 'Digital marketing that helps brands reach, engage, and convert audiences, with strategy and execution aligned to growth.',
-    headline: 'Digital Marketing That Delivers Measurable Growth',
+    headline: 'Digital Marketing Services',
     lead: 'Getting attention is easy. Turning it into leads and revenue is the real challenge.',
     intro: [
       'Our digital marketing services are built around sustainable growth. We combine search, social, content strategy, and performance campaigns to attract the right audience and convert them into customers.',
@@ -293,7 +293,7 @@ export const services = [
     short: 'E-Learning',
     pageTitle: 'E-Learning Development | Microlearning, VILT, Gamification & Video',
     text: 'Modern digital learning — e-learning from Level 1 to 5, VILT, micro-learning, simulations, gamification, and professional video.',
-    headline: 'Digital Learning Experiences People Complete and Remember',
+    headline: 'Custom eLearning Development Services',
     lead: 'Long, boring courses lose learners. Engaging, well-designed digital learning keeps them.',
     intro: [
       'We create e-learning and digital learning that improve completion, retention, and on-the-job application. From foundational courses to advanced programmes, micro-learning, simulations, and high-impact video — we design learning that works.',

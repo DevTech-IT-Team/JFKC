@@ -32,9 +32,8 @@ const Hero = () => {
         <div className="w-full px-4 pb-20 pt-28 sm:px-5 sm:pb-24 lg:px-8 lg:pb-28">
           <div className="max-w-xl lg:max-w-[52%]">
             <h1 className="hero-banner__rise hero-banner__rise--2 mb-5 font-[family-name:var(--font-display)] text-5xl leading-[1.28] tracking-[-0.04em] text-white sm:text-6xl lg:text-[4.25rem]">
-              Unleashing the{' '}
-              <span className="hero-banner__accent">Knowledge</span>{' '}
-              Brilliance
+              Custom eLearning Development{' '}
+              <span className="hero-banner__accent">Company in India</span>
             </h1>
 
             <p className="hero-banner__rise hero-banner__rise--3 mb-9 max-w-md text-base leading-relaxed text-white/75 sm:text-lg">

@@ -94,7 +94,7 @@ const ImmersiveLearning = () => {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-              Immersive <span className="text-orange-400">Learning</span>
+              Immersive Learning <span className="text-orange-400">Solutions</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
               Gamification, scenarios, VR, AR, and custom experiences — immersive

@@ -157,8 +157,8 @@ const Products = () => {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-              Athena Learning{' '}
-              <span className="text-orange-400">Products</span>
+              Athena LMS and AI{' '}
+              <span className="text-orange-400">Learning Products</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
               LMS, e-books, studios, and AI tools — built to create, deliver, and

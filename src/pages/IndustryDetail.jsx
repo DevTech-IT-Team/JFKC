@@ -51,7 +51,7 @@ const IndustryDetail = () => {
               Industry Sample
             </p>
             <h1 className="mt-3 text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.12]">
-              {industry.name}
+              {industry.h1 || industry.name}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
               {industry.short}

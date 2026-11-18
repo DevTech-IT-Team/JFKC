@@ -45,8 +45,8 @@ const Services = () => {
             Our Services
           </p>
           <h1 className="max-w-3xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem] lg:leading-[1.12]">
-            Unparalleled Support For{' '}
-            <span className="text-orange-400">Learning Needs</span>
+            eLearning and Corporate{' '}
+            <span className="text-orange-400">Training Services</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
             Pick a service — explore how JFKC designs, delivers, and scales learning

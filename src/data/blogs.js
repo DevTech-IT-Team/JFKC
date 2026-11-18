@@ -26,7 +26,7 @@ export const blogs = [
     readTime: '10 min',
     image: alignTrainingBanner,
     imageAlt: 'Custom E-Learning Solutions: Align Training with Business Goals — JF Knowledge Centre',
-    metaTitle: 'Custom E-Learning Solutions: Align Training with Business Goals',
+    metaTitle: 'Custom eLearning Solutions Aligned to Business Goals | JFKC',
     metaDescription:
       'Learn how custom e-learning solutions align employee training with business goals, close skill gaps and support measurable workplace performance.',
     metaKeywords:
@@ -828,7 +828,7 @@ export const blogs = [
     readTime: '10 min',
     image: customLearningBanner,
     imageAlt: 'Custom e-learning vs off-the-shelf training — JF Knowledge Centre',
-    metaTitle: 'Custom E-Learning vs. Off-the-Shelf Training: Which Is Right for Your Business?',
+    metaTitle: 'Custom eLearning vs Off-the-Shelf Training: Which Fits?',
     metaDescription:
       'Compare custom e-learning and off-the-shelf training by cost, flexibility, development time and business needs to choose the right approach.',
     metaKeywords:
@@ -1884,10 +1884,9 @@ export const blogs = [
     readTime: '11 min',
     image: hybridModelBanner,
     imageAlt: 'JFKC hybrid AI accounting workflow with professional review',
-    metaTitle:
-      "How JFKC’s Hybrid Model Combines AI Efficiency With Chartered Accountant Oversight",
+    metaTitle: 'JFKC Hybrid Model: AI Bookkeeping With CA Oversight',
     metaDescription:
-      'Learn how JFKC combines AI efficiency with chartered accountant oversight to support accurate bookkeeping, financial reporting, quality control, and better decisions for international clients. Schedule a process demo.',
+      'See how JFKC pairs AI bookkeeping with chartered accountant oversight for accurate records, timely reporting and quality control for international clients.',
     metaKeywords:
       'AI accounting with chartered accountant oversight, hybrid accounting model, AI bookkeeping services, outsourced accounting for international businesses, chartered accountant review, financial reporting services, human-in-the-loop accounting, bookkeeping quality control, international accounting support',
     cta: 'Schedule a Process Demo with JFKC',
@@ -2263,10 +2262,9 @@ export const blogs = [
     date: 'October 19, 2026',
     readTime: '12 min',
     image: bookkeepingBanner,
-    metaTitle:
-      'Problem vs. Solution: CA + AI Bookkeeping for Global Businesses | JF Knowledge Centre',
+    metaTitle: 'CA + AI Bookkeeping for International Businesses | JFKC',
     metaDescription:
-      'Discover how combining Chartered Accountant expertise with AI bookkeeping helps international businesses streamline accounting, improve financial visibility, and manage records more efficiently.',
+      'Why international businesses are moving to CA + AI bookkeeping: faster record-keeping, clearer financial visibility and chartered accountant review.',
     metaKeywords:
       'AI bookkeeping for international businesses, CA and AI bookkeeping, international business accounting, AI-powered bookkeeping, outsourced bookkeeping services, accounting automation, global business accounting, Chartered Accountant services, bookkeeping solutions for global companies, traditional accounting vs AI bookkeeping, JF KNOWLEDGE CENTRE',
     cta: 'Schedule a consultation with JF Knowledge Centre',

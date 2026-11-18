@@ -23,8 +23,7 @@ const Privacy = () => {
             Privacy Policy
           </p>
           <h1 className="max-w-3xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            Ensuring Data Security in Corporate Training and{' '}
-            <span className="text-orange-400">Education</span>
+            Privacy <span className="text-orange-400">Policy</span>
           </h1>
         </div>
       </section>

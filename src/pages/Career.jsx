@@ -48,8 +48,7 @@ const Career = () => {
             Careers
           </p>
           <h1 className="max-w-3xl text-4xl tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem] lg:leading-[1.12]">
-            Shape the future of the{' '}
-            <span className="text-orange-400">learning process</span>
+            Careers at <span className="text-orange-400">JF Knowledge Centre</span>
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
             Are you passionate about shaping the future of learning? Explore exciting
