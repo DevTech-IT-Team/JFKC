@@ -19,7 +19,7 @@ const SEO = ({
   description,
   keywords,
   path = '/',
-  image = 'https://jfknowledge.com/logobg.png',
+  image = 'https://jfknowledge.com/og-image.png',
 }) => {
   useEffect(() => {
     const canonical = `https://jfknowledge.com${path}`;

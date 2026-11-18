@@ -2,7 +2,7 @@ export const seo = {
   home: {
     title: 'JF Knowledge Centre | E-Learning, LMS & Digital Solutions',
     description:
-      'Discover JF Knowledge Centre Centre for custom e-learning content, LMS solutions, digital learning, instructional design, and business services.',
+      'Discover JF Knowledge Centre for custom e-learning content, LMS solutions, digital learning, instructional design, and business services.',
     keywords:
       'JF Knowledge Centre, e-learning solutions, LMS development, digital learning, instructional design, corporate training',
     path: '/',
@@ -10,15 +10,15 @@ export const seo = {
   about: {
     title: 'About JF Knowledge Centre | Our Expertise & Learning Solutions',
     description:
-      'Learn about JF Knowledge Centre Centre, our mission, expertise, and commitment to creating engaging digital learning experiences for businesses and institutions.',
+      'Learn about JF Knowledge Centre, our mission, expertise, and commitment to creating engaging digital learning experiences for businesses and institutions.',
     keywords:
-      'about JF Knowledge Centre, JF Knowledge Centre Centre, e-learning company, learning solutions, digital education, corporate learning',
+      'about JF Knowledge Centre, JF Knowledge Centre, e-learning company, learning solutions, digital education, corporate learning',
     path: '/about',
   },
   contact: {
     title: 'Contact JF Knowledge Centre | Discuss Your Business Needs',
     description:
-      'Contact JF Knowledge Centre Centre to discuss custom e-learning, corporate training, digital solutions, and professional services tailored to your business goals.',
+      'Contact JF Knowledge Centre to discuss custom e-learning, corporate training, digital solutions, and professional services tailored to your business goals.',
     keywords:
       'contact JF Knowledge Centre, e-learning consultation, business enquiries, corporate training services, learning solutions contact',
     path: '/contact',
@@ -26,7 +26,7 @@ export const seo = {
   career: {
     title: 'Careers at JF Knowledge Centre | Explore Job Opportunities',
     description:
-      'Explore career opportunities at JF Knowledge Centre Centre and discover opportunities to contribute to e-learning, instructional design, technology, and business solutions.',
+      'Explore career opportunities at JF Knowledge Centre and discover opportunities to contribute to e-learning, instructional design, technology, and business solutions.',
     keywords:
       'JF Knowledge Centre careers, jobs at JF Knowledge Centre, e-learning jobs, instructional design careers, digital learning jobs',
     path: '/career',
@@ -34,7 +34,7 @@ export const seo = {
   privacy: {
     title: 'Privacy Policy | JF Knowledge Centre',
     description:
-      'Read the JF Knowledge Centre Centre privacy policy to understand how personal information is collected, used, protected, and handled when you use our website.',
+      'Read the JF Knowledge Centre privacy policy to understand how personal information is collected, used, protected, and handled when you use our website.',
     keywords:
       'JF Knowledge Centre privacy policy, data privacy, personal information, website privacy, privacy practices',
     path: '/privacy',
@@ -42,7 +42,7 @@ export const seo = {
   terms: {
     title: 'Terms and Conditions | JF Knowledge Centre',
     description:
-      'Review the terms and conditions governing website use, intellectual property, content access, and interactions with JF Knowledge Centre Centre.',
+      'Review the terms and conditions governing website use, intellectual property, content access, and interactions with JF Knowledge Centre.',
     keywords:
       'JF Knowledge Centre terms, terms and conditions, website terms, intellectual property, website usage policy',
     path: '/terms',
@@ -50,7 +50,7 @@ export const seo = {
   services: {
     title: 'Business Services | JF Knowledge Centre',
     description:
-      'Explore JF Knowledge Centre Centre services, including e-learning content design, CPA bookkeeping, recruitment, IT asset management, localization, and digital marketing.',
+      'Explore JF Knowledge Centre services, including e-learning content design, CPA bookkeeping, recruitment, IT asset management, localization, and digital marketing.',
     keywords:
       'JF Knowledge Centre services, business services, e-learning services, CPA bookkeeping, recruitment, IT asset management, digital marketing',
     path: '/services',
@@ -66,7 +66,7 @@ export const seo = {
   portfolio: {
     title: 'Our Portfolio | E-Learning Projects Across Industries',
     description:
-      'Explore JF Knowledge Centre Centre\'s portfolio of industry-focused e-learning content, interactive training, digital learning experiences, and customized solutions.',
+      "Explore JF Knowledge Centre's portfolio of industry-focused e-learning content, interactive training, digital learning experiences, and customized solutions.",
     keywords:
       'JF Knowledge Centre portfolio, e-learning portfolio, digital learning projects, instructional design samples, corporate training portfolio',
     path: '/portfolio',
