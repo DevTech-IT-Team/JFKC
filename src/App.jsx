@@ -18,6 +18,7 @@ import LearningTechnology from './pages/LearningTechnology';
 import Career from './pages/Career';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/training-delivery" element={<TrainingDelivery />} />
         <Route path="/immersive-learning" element={<ImmersiveLearning />} />
         <Route path="/learning-technology" element={<LearningTechnology />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
