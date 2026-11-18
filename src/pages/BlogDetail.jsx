@@ -1,18 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getBlogBySlug } from '../data/blogs';
-
-const setMeta = (name, content) => {
-  if (!content) return;
-  let element = document.querySelector(`meta[name="${name}"]`);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute('name', name);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', content);
-};
+import SEO from '../components/SEO';
 
 const renderFormattedText = (text) => {
   if (typeof text !== 'string') return text;
@@ -72,25 +62,18 @@ const BlogDetail = () => {
   const { slug } = useParams();
   const post = getBlogBySlug(slug);
 
-  useEffect(() => {
-    if (!post) return undefined;
-    const previousTitle = document.title;
-    document.title = post.metaTitle || post.title;
-    setMeta('description', post.metaDescription || post.excerpt);
-    setMeta('keywords', post.metaKeywords);
-    setMeta('og:title', post.metaTitle || post.title);
-    setMeta('og:description', post.metaDescription || post.excerpt);
-    return () => {
-      document.title = previousTitle;
-    };
-  }, [post]);
-
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
+      <SEO
+        title={post.metaTitle || post.title}
+        description={post.metaDescription || post.excerpt}
+        keywords={post.metaKeywords}
+        path={`/blog/${slug}`}
+      />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.2),transparent_55%)]"

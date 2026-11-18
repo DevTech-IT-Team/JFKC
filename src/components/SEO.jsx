@@ -20,6 +20,7 @@ const SEO = ({
   keywords,
   path = '/',
   image = 'https://jfknowledge.com/og-image.png',
+  jsonLd = null,
 }) => {
   useEffect(() => {
     const canonical = `https://jfknowledge.com${path}`;
@@ -46,7 +47,21 @@ const SEO = ({
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute('href', canonical);
-  }, [description, image, keywords, path, title]);
+
+    // JSON-LD structured data — injected per page, cleaned up on unmount
+    let ldScript = null;
+    if (jsonLd) {
+      ldScript = document.createElement('script');
+      ldScript.setAttribute('type', 'application/ld+json');
+      ldScript.setAttribute('data-seo', 'true');
+      ldScript.textContent = JSON.stringify(jsonLd);
+      document.head.appendChild(ldScript);
+    }
+
+    return () => {
+      if (ldScript) ldScript.remove();
+    };
+  }, [description, image, jsonLd, keywords, path, title]);
 
   return null;
 };
