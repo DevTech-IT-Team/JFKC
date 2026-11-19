@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import heroImg from '../../assets/bg3.png';
+import AppImage from '../AppImage';
+import { imageMeta } from '../../data/image-size';
+import heroImg from '../../assets/bg3.webp';
+
+const heroSize = imageMeta('src/assets/bg3.webp');
 
 const Hero = () => {
   return (
     <section className="hero-banner relative w-full min-h-[100svh] overflow-hidden bg-[#0a0604] font-[family-name:var(--font-display)] text-white">
       {/* Full-bleed background — fills under navbar, no top gap */}
-      <img
+      <AppImage
+        priority
         src={heroImg}
         alt=""
+        width={heroSize.imageWidth}
+        height={heroSize.imageHeight}
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[35%_center] md:object-right md:object-top"
         aria-hidden="true"
       />

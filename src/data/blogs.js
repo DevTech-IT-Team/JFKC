@@ -1,9 +1,10 @@
-import cpaBanner from '../assets/blogs/jfkc blog banner 26 oct.png';
-import bookkeepingBanner from '../assets/blogs/From Bookkeeping Stress to Smart Success.png';
-import hybridModelBanner from '../assets/blogs/How the JFKC Hybrid Model Works.png';
-import delayedReportingBanner from '../assets/jfkc blog banner 23 oct.png';
-import customLearningBanner from '../assets/JFKC blog banner 6 nov (2).png';
+import cpaBanner from '../assets/blogs/jfkc-blog-banner-26-oct.webp';
+import bookkeepingBanner from '../assets/blogs/from-bookkeeping-stress-to-smart-success.webp';
+import hybridModelBanner from '../assets/blogs/how-the-jfkc-hybrid-model-works.webp';
+import delayedReportingBanner from '../assets/jfkc-blog-banner-23-oct.webp';
+import customLearningBanner from '../assets/jfkc-blog-banner-6-nov.webp';
 import alignTrainingBanner from '../assets/blogs/10_nov_blog.webp';
+import { imageMeta } from './image-size';
 
 export const blogCategories = [
   'Bookkeeping',
@@ -25,6 +26,7 @@ export const blogs = [
     date: 'November 10, 2026',
     readTime: '10 min',
     image: alignTrainingBanner,
+    ...imageMeta('src/assets/blogs/10_nov_blog.webp'),
     imageAlt: 'Custom E-Learning Solutions: Align Training with Business Goals — JF Knowledge Centre',
     metaTitle: 'Custom eLearning Solutions Aligned to Business Goals | JFKC',
     metaDescription:
@@ -827,6 +829,7 @@ export const blogs = [
     date: 'November 6, 2026',
     readTime: '10 min',
     image: customLearningBanner,
+    ...imageMeta('src/assets/jfkc-blog-banner-6-nov.webp'),
     imageAlt: 'Custom e-learning vs off-the-shelf training — JF Knowledge Centre',
     metaTitle: 'Custom eLearning vs Off-the-Shelf Training: Which Fits?',
     metaDescription:
@@ -1118,6 +1121,7 @@ export const blogs = [
     date: 'October 26, 2026',
     readTime: '12 min',
     image: cpaBanner,
+    ...imageMeta('src/assets/blogs/jfkc-blog-banner-26-oct.webp'),
     imageAlt: 'CPA services for small businesses — JF Knowledge Centre',
     metaTitle: 'CPA Services for Small Businesses | JF Knowledge Centre',
     metaDescription:
@@ -1451,6 +1455,7 @@ export const blogs = [
     date: 'October 23, 2026',
     readTime: '10 min',
     image: delayedReportingBanner,
+    ...imageMeta('src/assets/jfkc-blog-banner-23-oct.webp'),
     imageAlt:
       'Problem vs Solution: delayed financial visibility compared with timely CA and AI reporting',
     metaTitle: 'Delayed Financial Reporting: How CA + AI Improves Visibility',
@@ -1883,6 +1888,7 @@ export const blogs = [
     date: 'October 22, 2026',
     readTime: '11 min',
     image: hybridModelBanner,
+    ...imageMeta('src/assets/blogs/how-the-jfkc-hybrid-model-works.webp'),
     imageAlt: 'JFKC hybrid AI accounting workflow with professional review',
     metaTitle: 'JFKC Hybrid Model: AI Bookkeeping With CA Oversight',
     metaDescription:
@@ -2262,6 +2268,7 @@ export const blogs = [
     date: 'October 19, 2026',
     readTime: '12 min',
     image: bookkeepingBanner,
+    ...imageMeta('src/assets/blogs/from-bookkeeping-stress-to-smart-success.webp'),
     metaTitle: 'CA + AI Bookkeeping for International Businesses | JFKC',
     metaDescription:
       'Why international businesses are moving to CA + AI bookkeeping: faster record-keeping, clearer financial visibility and chartered accountant review.',

@@ -28,6 +28,7 @@ const NotFound = () => {
         title="404 — Page Not Found | JF Knowledge Centre"
         description="The page you're looking for doesn't exist. Return to JF Knowledge Centre to explore e-learning, LMS solutions, and business services."
         path={pathname}
+        noindex
       />
 
       {/* Dark hero banner — matches site pattern */}

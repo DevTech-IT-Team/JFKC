@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import { getBlogBySlug } from '../data/blogs';
+import AppImage from '../components/AppImage';
 import SEO from '../components/SEO';
+import { getBlogBySlug } from '../data/blogs';
+import { blogPostingNode } from '../data/site';
+import NotFound from './NotFound';
 
 const renderFormattedText = (text) => {
   if (typeof text !== 'string') return text;
@@ -63,7 +66,7 @@ const BlogDetail = () => {
   const post = getBlogBySlug(slug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <NotFound />;
   }
 
   return (
@@ -72,7 +75,14 @@ const BlogDetail = () => {
         title={post.metaTitle || post.title}
         description={post.metaDescription || post.excerpt}
         keywords={post.metaKeywords}
-        path={`/blog/${slug}`}
+        path={`/blog/${post.slug}`}
+        image={post.image}
+        imageWidth={post.imageWidth}
+        imageHeight={post.imageHeight}
+        imageAlt={post.imageAlt || post.title}
+        type="article"
+        crumbTitle={post.title}
+        extraGraph={blogPostingNode(post)}
       />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32">
         <div
@@ -103,9 +113,12 @@ const BlogDetail = () => {
       </section>
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <img
+        <AppImage
+          priority
           src={post.image}
           alt={post.imageAlt || post.title}
+          width={post.imageWidth}
+          height={post.imageHeight}
           className="mb-10 w-full rounded-2xl"
         />
         <div className="space-y-5 text-base leading-relaxed text-slate-600">

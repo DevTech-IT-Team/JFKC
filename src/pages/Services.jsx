@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -138,7 +139,8 @@ const Services = () => {
 
             {/* Visual panel */}
             <div className="relative min-h-[320px] overflow-hidden rounded-[2rem] ring-1 ring-slate-200 sm:min-h-[400px] lg:min-h-full">
-              <img
+              <AppImage
+                priority
                 key={`img-${tick}`}
                 src={current.image}
                 alt={current.name}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import SEO from '../components/SEO';
 import { blogs } from '../data/blogs';
 import { seo } from '../data/seo';
@@ -39,9 +40,12 @@ const Blog = () => {
             className="group grid overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-slate-200 lg:grid-cols-2"
           >
             <div className="relative min-h-[240px]">
-              <img
+              <AppImage
+                priority
                 src={featured.image}
                 alt=""
+                width={featured.imageWidth}
+                height={featured.imageHeight}
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
@@ -74,7 +78,13 @@ const Blog = () => {
                 className="overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-slate-200"
               >
                 <Link to={`/blog/${item.slug}`} className="relative block aspect-[16/9]">
-                  <img src={item.image} alt="" className="h-full w-full object-cover" />
+                  <AppImage
+                    src={item.image}
+                    alt=""
+                    width={item.imageWidth}
+                    height={item.imageHeight}
+                    className="h-full w-full object-cover"
+                  />
                   <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-700 uppercase">
                     {item.category}
                   </span>

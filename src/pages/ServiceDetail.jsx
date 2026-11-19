@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
-import { Link, useParams, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getServiceBySlug, services } from '../data/services';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { getServiceSeo } from '../data/seo';
+import NotFound from './NotFound';
 
 const CapabilityFlow = ({ items }) => {
   const count = items.length;
@@ -123,26 +125,18 @@ const ServiceDetail = () => {
   const service = getServiceBySlug(slug);
   const metadata = getServiceSeo(slug);
 
-  useEffect(() => {
-    if (!service) return undefined;
-    const previous = document.title;
-    document.title = service.pageTitle;
-    return () => {
-      document.title = previous;
-    };
-  }, [service]);
-
   if (!service) {
-    return <Navigate to="/services" replace />;
+    return <NotFound />;
   }
 
   const others = services.filter((item) => item.slug !== service.slug);
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)] text-slate-800">
-      <SEO {...metadata} />
+      <SEO {...metadata} crumbTitle={service.name} />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <img
+        <AppImage
+          priority
           src={service.image}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-30"
@@ -217,7 +211,7 @@ const ServiceDetail = () => {
               </div>
             </div>
             <div className="relative min-h-[260px] sm:min-h-[320px]">
-              <img
+              <AppImage
                 src={service.image}
                 alt={service.name}
                 className="absolute inset-0 h-full w-full object-cover"
@@ -354,7 +348,7 @@ const ServiceDetail = () => {
                   to={`/services/${item.slug}`}
                   className="group relative h-[250px] w-[280px] shrink-0 overflow-hidden rounded-[1.4rem] ring-1 ring-orange-200/70 sm:w-[320px]"
                 >
-                  <img
+                  <AppImage
                     src={item.image}
                     alt=""
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

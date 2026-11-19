@@ -5,13 +5,25 @@ import { seo } from '../data/seo';
 
 const contactDetails = [
   {
-    label: 'Office',
+    label: 'Kirkland office',
+    value: '12315 NE 97th Street, Kirkland, WA 98033, USA',
+    href: 'https://maps.google.com/?q=12315+NE+97th+Street+Kirkland+WA+98033',
+    Icon: MapPin,
+  },
+  {
+    label: 'Kirkland telephone',
+    value: '+1 (425) 400-9246',
+    href: 'tel:+14254009246',
+    Icon: Phone,
+  },
+  {
+    label: 'New Delhi office',
     value: 'GF-41, Omaxe Square, Jasola District Centre, New Delhi-25',
     href: 'https://maps.google.com/?q=Omaxe+Square+Jasola+District+Centre+New+Delhi',
     Icon: MapPin,
   },
   {
-    label: 'Telephone Number',
+    label: 'New Delhi telephone',
     value: '+91 9818238969',
     href: 'tel:+919818238969',
     Icon: Phone,
@@ -24,8 +36,20 @@ const contactDetails = [
   },
 ];
 
-const MAP_EMBED =
-  'https://maps.google.com/maps?q=Omaxe+Square,+Jasola+District+Centre,+New+Delhi-25&z=16&output=embed';
+const officeMaps = [
+  {
+    name: 'Kirkland',
+    title: 'JF Knowledge Centre — 12315 NE 97th Street, Kirkland, WA',
+    href: 'https://maps.google.com/?q=12315+NE+97th+Street+Kirkland+WA+98033',
+    src: 'https://maps.google.com/maps?q=12315+NE+97th+Street,+Kirkland,+WA+98033&z=16&output=embed',
+  },
+  {
+    name: 'New Delhi',
+    title: 'JF Knowledge Centre — Omaxe Square, Jasola, New Delhi',
+    href: 'https://maps.google.com/?q=Omaxe+Square+Jasola+District+Centre+New+Delhi',
+    src: 'https://maps.google.com/maps?q=Omaxe+Square,+Jasola+District+Centre,+New+Delhi-25&z=16&output=embed',
+  },
+];
 
 const CONTACT_SCRIPT_URL = import.meta.env.VITE_CONTACT_SCRIPT_URL;
 
@@ -269,35 +293,42 @@ const Contact = () => {
 
       <section className="relative pb-16 sm:pb-20 lg:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] text-orange-500 uppercase">
-                Find us
-              </p>
-              <h2 className="mt-2 text-2xl tracking-tight text-slate-900 sm:text-3xl">
-                Our office on the map
-              </h2>
-            </div>
-            <a
-              href="https://maps.google.com/?q=Omaxe+Square+Jasola+District+Centre+New+Delhi"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-colors hover:text-orange-600"
-            >
-              Open in Google Maps
-              <ArrowRight className="h-4 w-4" />
-            </a>
+          <div className="mb-6">
+            <p className="text-xs font-bold tracking-[0.2em] text-orange-500 uppercase">
+              Find us
+            </p>
+            <h2 className="mt-2 text-2xl tracking-tight text-slate-900 sm:text-3xl">
+              Our offices on the map
+            </h2>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] shadow-lg ring-1 ring-slate-200/80">
-            <iframe
-              title="JF Knowledge Centre — Omaxe Square, Jasola, New Delhi"
-              src={MAP_EMBED}
-              className="h-[320px] w-full border-0 sm:h-[420px] lg:h-[480px]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+          <div className="grid gap-6 lg:grid-cols-2">
+            {officeMaps.map((office) => (
+              <div key={office.name}>
+                <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <h3 className="text-lg font-semibold tracking-tight text-slate-900">{office.name}</h3>
+                  <a
+                    href={office.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-colors hover:text-orange-600"
+                  >
+                    Open in Google Maps
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+                <div className="overflow-hidden rounded-[2rem] shadow-lg ring-1 ring-slate-200/80">
+                  <iframe
+                    title={office.title}
+                    src={office.src}
+                    className="h-[320px] w-full border-0 sm:h-[420px]"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

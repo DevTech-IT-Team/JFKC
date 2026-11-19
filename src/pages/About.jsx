@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, Target, Heart } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -100,7 +101,7 @@ const About = () => {
               aria-hidden="true"
             />
             <div className="relative aspect-[5/4] overflow-hidden rounded-[2rem] ring-1 ring-orange-200/60">
-              <img
+              <AppImage
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
                 alt="JFKC team collaborating on e-learning solutions"
                 className="absolute inset-0 h-full w-full object-cover"
@@ -196,7 +197,7 @@ const About = () => {
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
             <div className="relative lg:col-span-5">
               <div className="aspect-[4/3] max-h-[380px] overflow-hidden rounded-[2rem] ring-1 ring-slate-200/80 sm:max-h-[420px]">
-                <img
+                <AppImage
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop"
                   alt="JFKC professionals collaborating"
                   className="h-full w-full object-cover object-center"

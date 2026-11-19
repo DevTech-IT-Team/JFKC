@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
-import logo from '../assets/logo.jpeg';
+import AppImage from './AppImage';
+import { imageMeta } from '../data/image-size';
+import logo from '../assets/logo.webp';
+
+const logoSize = imageMeta('src/assets/logo.webp');
 
 const generalLinks = [
   // { label: 'Career', to: '/career' },
@@ -48,7 +52,13 @@ const Footer = () => {
           {/* Brand + CTA */}
           <div className="space-y-5">
             <div className="inline-flex items-center rounded-md bg-white px-3 py-2.5 shadow-sm">
-              <img src={logo} alt="JF Knowledge Centre" className="h-10 w-auto max-h-12 object-contain" />
+              <AppImage
+                src={logo}
+                alt="JF Knowledge Centre"
+                width={logoSize.imageWidth}
+                height={logoSize.imageHeight}
+                className="h-10 w-auto max-h-12 object-contain"
+              />
             </div>
 
             <p className="text-base text-white/90">Your Reliable Knowledge Partner</p>
@@ -65,6 +75,16 @@ const Footer = () => {
             <div className="mt-2 mb-5 h-0.5 w-14 bg-orange-500" />
 
             <ul className="space-y-4 text-sm text-white/85">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
+                <span>12315 NE 97th Street, Kirkland, WA 98033, USA</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 shrink-0 text-orange-500" />
+                <a href="tel:+14254009246" className="transition-colors hover:text-orange-400">
+                  +1 (425) 400-9246
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
                 <span>GF-41, Omaxe Square, Jasola District Centre, New Delhi-25</span>
