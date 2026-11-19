@@ -60,6 +60,22 @@ export function publishedIso(dateLabel) {
   return `${match[3]}-${month}-${match[2].padStart(2, '0')}`;
 }
 
+const kirklandAddress = {
+  '@type': 'PostalAddress',
+  streetAddress: '12315 NE 97th Street',
+  addressLocality: 'Kirkland',
+  addressRegion: 'WA',
+  postalCode: '98033',
+  addressCountry: 'US',
+};
+
+const newDelhiAddress = {
+  '@type': 'PostalAddress',
+  streetAddress: 'GF-41, Omaxe Square, Jasola District Centre',
+  addressLocality: 'New Delhi',
+  addressCountry: 'IN',
+};
+
 export function organizationNode() {
   return {
     '@type': 'Organization',
@@ -75,13 +91,21 @@ export function organizationNode() {
     },
     email: 'info@jfknowledge.com',
     telephone: '+1-425-400-9246',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '12315 NE 97th Street',
-      addressLocality: 'Kirkland',
-      addressRegion: 'WA',
-      addressCountry: 'US',
-    },
+    address: kirklandAddress,
+    location: [
+      {
+        '@type': 'LocalBusiness',
+        name: 'JF Knowledge Centre — Kirkland',
+        address: kirklandAddress,
+        telephone: '+1-425-400-9246',
+      },
+      {
+        '@type': 'LocalBusiness',
+        name: 'JF Knowledge Centre — New Delhi',
+        address: newDelhiAddress,
+        telephone: '+91-9818238969',
+      },
+    ],
   };
 }
 

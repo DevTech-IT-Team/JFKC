@@ -77,6 +77,16 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-white/85">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
+                <span>12315 NE 97th Street, Kirkland, WA 98033, USA</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 shrink-0 text-orange-500" />
+                <a href="tel:+14254009246" className="transition-colors hover:text-orange-400">
+                  +1 (425) 400-9246
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
                 <span>GF-41, Omaxe Square, Jasola District Centre, New Delhi-25</span>
               </li>
               <li className="flex items-center gap-3">
