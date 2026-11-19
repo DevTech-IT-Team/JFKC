@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, MonitorPlay, Sparkles } from 'lucide-react';
+import AppImage from '../AppImage';
 
 const highlights = [
   { label: 'E-Learning Modules', Icon: BookOpen },
@@ -54,7 +55,7 @@ const WhoWeAre = () => {
               aria-hidden="true"
             />
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] ring-1 ring-orange-200/60 sm:aspect-[5/4]">
-              <img
+              <AppImage
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
                 alt="JFKC team collaborating on e-learning and LMS solutions"
                 className="absolute inset-0 h-full w-full object-cover"

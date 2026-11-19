@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Play } from 'lucide-react';
 import { getIndustryBySlug, industries } from '../data/industries';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { getIndustrySeo } from '../data/seo';
+import NotFound from './NotFound';
 
 const IndustryDetail = () => {
   const { slug } = useParams();
@@ -12,17 +14,18 @@ const IndustryDetail = () => {
   const metadata = getIndustrySeo(slug);
 
   if (!industry) {
-    return <Navigate to="/portfolio" replace />;
+    return <NotFound />;
   }
 
   const others = industries.filter((item) => item.slug !== industry.slug);
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
-      <SEO {...metadata} />
+      <SEO {...metadata} crumbTitle={industry.name} />
       {/* Hero with image backdrop */}
       <section className="relative min-h-[52svh] overflow-hidden bg-[#0c1220] pt-28 sm:min-h-[56svh] sm:pt-32">
-        <img
+        <AppImage
+          priority
           src={industry.image}
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
@@ -148,7 +151,7 @@ const IndustryDetail = () => {
                 className="group w-[240px] shrink-0 overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_-16px_rgba(15,23,42,0.2)] ring-1 ring-slate-200/80 transition-all duration-300 hover:-translate-y-1 hover:ring-orange-200 sm:w-[270px]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
+                  <AppImage
                     src={item.image}
                     alt={item.name}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

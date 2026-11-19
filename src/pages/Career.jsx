@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Users, Lightbulb, Rocket } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -96,7 +97,8 @@ const Career = () => {
               aria-hidden="true"
             />
             <div className="relative aspect-[4/3] max-h-[420px] overflow-hidden rounded-[2rem] ring-1 ring-orange-200/60">
-              <img
+              <AppImage
+                priority
                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop"
                 alt="JFKC team collaborating on learning solutions"
                 className="absolute inset-0 h-full w-full object-cover"

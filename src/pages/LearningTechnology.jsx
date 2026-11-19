@@ -8,6 +8,7 @@ import {
   RefreshCw,
   PenTool,
 } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -121,7 +122,8 @@ const LearningTechnology = () => {
             {/* Left — image + content */}
             <div className="relative order-2 flex min-h-[360px] flex-col sm:min-h-[420px] lg:order-1 lg:min-h-full">
               <div className="relative flex-1 overflow-hidden">
-                <img
+                <AppImage
+                  priority
                   key={current.image}
                   src={current.image}
                   alt={current.name}

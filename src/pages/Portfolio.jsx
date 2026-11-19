@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Play, X } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -80,7 +81,8 @@ const Portfolio = () => {
                 >
                   {/* Media */}
                   <div className="relative min-h-[220px] overflow-hidden sm:min-h-[260px] lg:min-h-[300px]">
-                    <img
+                    <AppImage
+                      priority={index === 0}
                       src={item.image}
                       alt={item.name}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

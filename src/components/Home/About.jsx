@@ -1,4 +1,5 @@
 import React from 'react';
+import AppImage from '../AppImage';
 
 const aboutItems = [
   {
@@ -52,7 +53,7 @@ const About = () => {
               key={item.id}
               className={`group relative flex w-full flex-col overflow-hidden rounded-[1.75rem] p-6 text-left shadow-lg transition-transform duration-500 hover:-translate-y-1.5 sm:p-7 md:flex-1 ${item.height}`}
             >
-              <img
+              <AppImage
                 src={item.image}
                 alt=""
                 className="absolute inset-0 h-full w-full scale-110 object-cover blur-[2px] transition-transform duration-700 group-hover:scale-[1.15]"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import AppImage from '../AppImage';
 
 const WhyChooseUs = () => {
   return (
@@ -8,7 +9,7 @@ const WhyChooseUs = () => {
       <div className="grid min-h-[640px] grid-cols-1 lg:grid-cols-12">
         {/* Left — tall image */}
         <div className="relative min-h-[360px] lg:col-span-5 lg:min-h-full">
-          <img
+          <AppImage
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop"
             alt="JFKC partnership and collaboration"
             className="absolute inset-0 h-full w-full object-cover"

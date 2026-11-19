@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import AppImage from '../AppImage';
 import { industries } from '../../data/industries';
 
 const IndustryCard = ({ industry }) => (
@@ -9,7 +10,7 @@ const IndustryCard = ({ industry }) => (
     className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-orange-100/80 shadow-[0_8px_28px_-12px_rgba(249,115,22,0.25)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-16px_rgba(249,115,22,0.35)] hover:ring-orange-200"
   >
     <div className="relative aspect-[5/4] overflow-hidden">
-      <img
+      <AppImage
         src={industry.image}
         alt={industry.name}
         className="h-full w-full object-cover transition-transform duration-600 ease-out group-hover:scale-105"

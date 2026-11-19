@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
-import logo from '../assets/logo.jpeg';
+import AppImage from './AppImage';
+import { imageMeta } from '../data/image-size';
+import logo from '../assets/logo.webp';
+
+const logoSize = imageMeta('src/assets/logo.webp');
 
 const generalLinks = [
   // { label: 'Career', to: '/career' },
@@ -48,7 +52,13 @@ const Footer = () => {
           {/* Brand + CTA */}
           <div className="space-y-5">
             <div className="inline-flex items-center rounded-md bg-white px-3 py-2.5 shadow-sm">
-              <img src={logo} alt="JF Knowledge Centre" className="h-10 w-auto max-h-12 object-contain" />
+              <AppImage
+                src={logo}
+                alt="JF Knowledge Centre"
+                width={logoSize.imageWidth}
+                height={logoSize.imageHeight}
+                className="h-10 w-auto max-h-12 object-contain"
+              />
             </div>
 
             <p className="text-base text-white/90">Your Reliable Knowledge Partner</p>

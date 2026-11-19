@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import {
+  absoluteUrl,
+  breadcrumbNode,
+  buildCrumbs,
+  canonicalUrl,
+  organizationNode,
+  websiteNode,
+} from '../data/site';
 
-const setMeta = (attributeName, attributeValue, content) => {
-  if (!content) return;
-
-  const query = `meta[${attributeName}="${attributeValue}"]`;
-  let element = document.head.querySelector(query);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attributeName, attributeValue);
-    document.head.appendChild(element);
-  }
-
-  element.setAttribute('content', content);
+const imageMime = (url) => {
+  if (url.endsWith('.webp')) return 'image/webp';
+  if (url.endsWith('.png')) return 'image/png';
+  if (url.endsWith('.jpg') || url.endsWith('.jpeg')) return 'image/jpeg';
+  return undefined;
 };
 
 const SEO = ({
@@ -20,50 +21,53 @@ const SEO = ({
   keywords,
   path = '/',
   image = 'https://jfknowledge.com/og-image.png',
-  jsonLd = null,
+  imageWidth = 1200,
+  imageHeight = 630,
+  imageAlt = 'JF Knowledge Centre',
+  type = 'website',
+  noindex = false,
+  crumbTitle,
+  crumbs,
+  extraGraph = null,
 }) => {
-  useEffect(() => {
-    const canonical = `https://jfknowledge.com${path}`;
-    const resolvedTitle = title || 'JF Knowledge Centre';
+  const url = canonicalUrl(path);
+  const imageUrl = absoluteUrl(image);
+  const mime = imageMime(imageUrl);
+  const trail = noindex ? null : crumbs || buildCrumbs(path, crumbTitle);
+  const graph = [organizationNode(), websiteNode()];
+  if (trail && trail.length > 1) graph.push(breadcrumbNode(trail));
+  if (extraGraph) graph.push(extraGraph);
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  }).replace(/</g, '\\u003c');
 
-    document.title = resolvedTitle;
-
-    setMeta('name', 'description', description);
-    setMeta('name', 'keywords', keywords);
-    setMeta('property', 'og:title', resolvedTitle);
-    setMeta('property', 'og:description', description);
-    setMeta('property', 'og:type', 'website');
-    setMeta('property', 'og:url', canonical);
-    setMeta('property', 'og:image', image);
-    setMeta('name', 'twitter:card', 'summary_large_image');
-    setMeta('name', 'twitter:title', resolvedTitle);
-    setMeta('name', 'twitter:description', description);
-    setMeta('name', 'twitter:image', image);
-
-    let canonicalLink = document.head.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute('href', canonical);
-
-    // JSON-LD structured data — injected per page, cleaned up on unmount
-    let ldScript = null;
-    if (jsonLd) {
-      ldScript = document.createElement('script');
-      ldScript.setAttribute('type', 'application/ld+json');
-      ldScript.setAttribute('data-seo', 'true');
-      ldScript.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(ldScript);
-    }
-
-    return () => {
-      if (ldScript) ldScript.remove();
-    };
-  }, [description, image, jsonLd, keywords, path, title]);
-
-  return null;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {keywords ? <meta name="keywords" content={keywords} /> : null}
+      {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+      {noindex ? null : <link rel="canonical" href={url} />}
+      <meta property="og:site_name" content="JF Knowledge Centre" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={type} />
+      {noindex ? null : <meta property="og:url" content={url} />}
+      <meta property="og:image" content={imageUrl} />
+      {imageWidth ? <meta property="og:image:width" content={String(imageWidth)} /> : null}
+      {imageHeight ? <meta property="og:image:height" content={String(imageHeight)} /> : null}
+      {mime ? <meta property="og:image:type" content={mime} /> : null}
+      {imageAlt ? <meta property="og:image:alt" content={imageAlt} /> : null}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
+      {imageAlt ? <meta name="twitter:image:alt" content={imageAlt} /> : null}
+      <script type="application/ld+json">{jsonLd}</script>
+    </Helmet>
+  );
 };
 
 export default SEO;

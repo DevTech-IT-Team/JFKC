@@ -9,6 +9,7 @@ import {
   Presentation,
   ScreenShare,
 } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
@@ -164,7 +165,8 @@ const TrainingDelivery = () => {
             {/* Right — image + content */}
             <div className="relative flex min-h-[360px] flex-col sm:min-h-[420px] lg:min-h-full">
               <div className="relative flex-1 overflow-hidden">
-                <img
+                <AppImage
+                  priority
                   key={current.image}
                   src={current.image}
                   alt={current.name}

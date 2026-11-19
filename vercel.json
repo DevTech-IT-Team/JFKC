@@ -1,0 +1,18 @@
+{
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.jfknowledge.com" }],
+      "destination": "https://jfknowledge.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.jfknowledge.com" }],
+      "destination": "https://jfknowledge.com/:path*",
+      "permanent": true
+    }
+  ]
+}

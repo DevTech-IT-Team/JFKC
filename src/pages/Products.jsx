@@ -8,14 +8,16 @@ import {
   Sparkles,
   ArrowUpRight,
 } from 'lucide-react';
+import AppImage from '../components/AppImage';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
+import { imageMeta } from '../data/image-size';
 import { seo } from '../data/seo';
-import athenaLmsImage from '../assets/athena_dash.png';
-import ebookImage from '../assets/ebook.png';
-import webstudioImage from '../assets/webstudio.png';
-import virtualStudioImage from '../assets/vi.png';
-import chatbot from '../assets/chatbot.png';
+import athenaLmsImage from '../assets/athena_dash.webp';
+import ebookImage from '../assets/ebook.webp';
+import webstudioImage from '../assets/webstudio.webp';
+import virtualStudioImage from '../assets/vi.webp';
+import chatbot from '../assets/chatbot.webp';
 
 const products = [
   {
@@ -23,6 +25,7 @@ const products = [
     short: 'Athena LMS',
     text: 'AI-powered learning management and experience platform for courses, progress, and training at scale.',
     image: athenaLmsImage,
+    ...imageMeta('src/assets/athena_dash.webp'),
     Icon: MonitorPlay,
     href: 'https://lmsathena.com/',
     cta: 'Visit Athena LMS',
@@ -34,6 +37,7 @@ const products = [
     short: 'AI ebook Athena',
     text: 'Transform PDFs into interactive digital booklets learners can explore on any device.',
     image: ebookImage,
+    ...imageMeta('src/assets/ebook.webp'),
     Icon: BookOpen,
     href: 'https://ebook.lmsathena.com/',
     cta: 'Open E-book Athena',
@@ -44,6 +48,7 @@ const products = [
     short: 'WebStudio',
     text: 'Website builder for creating polished, on-brand sites without a long development cycle.',
     image: webstudioImage,
+    ...imageMeta('src/assets/webstudio.webp'),
     Icon: AppWindow,
     href: 'https://webstudio.lmsathena.com/',
     cta: 'Open WebStudio',
@@ -54,6 +59,7 @@ const products = [
     short: 'Virtual Studio',
     text: 'Create AI-powered videos that speak your language. Transform text into engaging video content with lifelike AI avatars — professional videos in minutes, not hours.',
     image: virtualStudioImage,
+    ...imageMeta('src/assets/vi.webp'),
     Icon: Clapperboard,
     href: 'https://virtualstudio.lmsathena.com/',
     cta: 'Open Virtual Studio',
@@ -64,6 +70,7 @@ const products = [
     short: 'AI Chatbot',
     text: 'Human-like AI video agents for support — coming soon.',
     image: chatbot,
+    ...imageMeta('src/assets/chatbot.webp'),
     Icon: Bot,
     href: null,
     cta: 'Coming soon',
@@ -107,9 +114,11 @@ const ProductCard = ({ item, index }) => {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_16px_40px_-24px_rgba(15,23,42,0.35)] ring-1 ring-orange-200/70">
       <div className="relative overflow-hidden bg-white">
-        <img
+        <AppImage
+          priority={index === 0}
           src={item.image}
           alt={item.name}
+          {...(item.imageWidth ? { width: item.imageWidth, height: item.imageHeight } : {})}
           className="block h-auto w-full"
         />
         <span className="absolute left-4 top-4 rounded-full bg-orange-500/95 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
