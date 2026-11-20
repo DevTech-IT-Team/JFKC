@@ -21,12 +21,22 @@ const SEO = ({
   path = '/',
   image = 'https://jfknowledge.com/og-image.png',
   jsonLd = null,
+  noindex = false,
 }) => {
   useEffect(() => {
     const canonical = `https://jfknowledge.com${path}`;
     const resolvedTitle = title || 'JF Knowledge Centre';
 
     document.title = resolvedTitle;
+
+    if (noindex) {
+      setMeta('name', 'robots', 'noindex');
+    } else {
+      const robots = document.head.querySelector('meta[name="robots"]');
+      if (robots && robots.getAttribute('content') === 'noindex') {
+        robots.remove();
+      }
+    }
 
     setMeta('name', 'description', description);
     setMeta('name', 'keywords', keywords);
@@ -61,7 +71,7 @@ const SEO = ({
     return () => {
       if (ldScript) ldScript.remove();
     };
-  }, [description, image, jsonLd, keywords, path, title]);
+  }, [description, image, jsonLd, keywords, noindex, path, title]);
 
   return null;
 };
