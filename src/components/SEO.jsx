@@ -1,69 +1,59 @@
-import { useEffect } from 'react';
+import { absoluteUrl, breadcrumbSchema } from '../data/schema';
 
-const setMeta = (attributeName, attributeValue, content) => {
-  if (!content) return;
-
-  const query = `meta[${attributeName}="${attributeValue}"]`;
-  let element = document.head.querySelector(query);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attributeName, attributeValue);
-    document.head.appendChild(element);
-  }
-
-  element.setAttribute('content', content);
+const asList = (jsonLd) => {
+  if (!jsonLd) return [];
+  return Array.isArray(jsonLd) ? jsonLd.filter(Boolean) : [jsonLd];
 };
+
+const DEFAULT_IMAGE = 'https://jfknowledge.com/og-image.png';
 
 const SEO = ({
   title,
   description,
-  keywords,
   path = '/',
-  image = 'https://jfknowledge.com/og-image.png',
+  image = DEFAULT_IMAGE,
   jsonLd = null,
+  breadcrumbLabel,
+  noindex = false,
+  ogType = 'website',
 }) => {
-  useEffect(() => {
-    const canonical = `https://jfknowledge.com${path}`;
-    const resolvedTitle = title || 'JF Knowledge Centre';
+  const resolvedTitle = title || 'JF Knowledge Centre';
+  const canonical = `https://jfknowledge.com${path.startsWith('/') ? path : `/${path}`}`;
+  const resolvedImage = absoluteUrl(image);
+  const graphs = noindex
+    ? asList(jsonLd)
+    : [breadcrumbSchema(path, breadcrumbLabel), ...asList(jsonLd)];
 
-    document.title = resolvedTitle;
-
-    setMeta('name', 'description', description);
-    setMeta('name', 'keywords', keywords);
-    setMeta('property', 'og:title', resolvedTitle);
-    setMeta('property', 'og:description', description);
-    setMeta('property', 'og:type', 'website');
-    setMeta('property', 'og:url', canonical);
-    setMeta('property', 'og:image', image);
-    setMeta('name', 'twitter:card', 'summary_large_image');
-    setMeta('name', 'twitter:title', resolvedTitle);
-    setMeta('name', 'twitter:description', description);
-    setMeta('name', 'twitter:image', image);
-
-    let canonicalLink = document.head.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute('href', canonical);
-
-    // JSON-LD structured data — injected per page, cleaned up on unmount
-    let ldScript = null;
-    if (jsonLd) {
-      ldScript = document.createElement('script');
-      ldScript.setAttribute('type', 'application/ld+json');
-      ldScript.setAttribute('data-seo', 'true');
-      ldScript.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(ldScript);
-    }
-
-    return () => {
-      if (ldScript) ldScript.remove();
-    };
-  }, [description, image, jsonLd, keywords, path, title]);
-
-  return null;
+  return (
+    <>
+      <title>{resolvedTitle}</title>
+      {description ? <meta name="description" content={description} /> : null}
+      {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+      <meta property="og:title" content={resolvedTitle} />
+      {description ? <meta property="og:description" content={description} /> : null}
+      <meta property="og:type" content={ogType} />
+      {noindex ? null : <meta property="og:url" content={canonical} />}
+      <meta property="og:image" content={resolvedImage} />
+      {resolvedImage === DEFAULT_IMAGE ? (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:type" content="image/png" />
+        </>
+      ) : null}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={resolvedTitle} />
+      {description ? <meta name="twitter:description" content={description} /> : null}
+      <meta name="twitter:image" content={resolvedImage} />
+      {graphs.map((data) => (
+        <script
+          key={data['@type']}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
+    </>
+  );
 };
 
 export default SEO;

@@ -8,6 +8,7 @@ const aboutItems = [
       'JF Knowledge Centre develops high-quality E-Learning modules and best-in-class Learning Management Systems.',
     image:
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900&auto=format&fit=crop',
+    alt: 'Colleagues collaborating around laptops on a learning project',
     height: 'h-[300px] lg:h-[340px]',
   },
   {
@@ -17,6 +18,7 @@ const aboutItems = [
       'We transform learning for our partners — driving success with innovative, learner-first approaches.',
     image:
       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=900&auto=format&fit=crop',
+    alt: 'Person learning on a laptop',
     height:'h-[380px] lg:h-[420px]',
   },
   {
@@ -26,6 +28,7 @@ const aboutItems = [
       'Empower your e-learning journey on digital platforms with tailored modules built for real impact.',
     image:
       'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=900&auto=format&fit=crop',
+    alt: 'Two colleagues reviewing work together on a laptop',
     height: 'h-[300px] lg:h-[340px]',
   },
  
@@ -54,9 +57,8 @@ const About = () => {
             >
               <img
                 src={item.image}
-                alt=""
+                alt={item.alt}
                 className="absolute inset-0 h-full w-full scale-110 object-cover blur-[2px] transition-transform duration-700 group-hover:scale-[1.15]"
-                aria-hidden="true"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80" />
               <div className="absolute inset-0 bg-gradient-to-t from-orange-950/30 via-transparent to-transparent opacity-80" />
