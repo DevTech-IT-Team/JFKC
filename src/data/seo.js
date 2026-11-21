@@ -80,7 +80,7 @@ export const seo = {
     path: '/blog',
   },
   'training-modules': {
-    title: 'Training Modules: Compliance, Leadership & Onboarding | JFKC',
+    title: 'Training Modules | Compliance, Leadership and Onboarding',
     description:
       'Ready and custom training modules for compliance, leadership, onboarding, soft skills and storytelling, built for corporate learners.',
     keywords:
@@ -104,7 +104,7 @@ export const seo = {
     path: '/immersive-learning',
   },
   'learning-technology': {
-    title: 'LMS & Learning Technology Solutions | JF Knowledge Centre',
+    title: 'LMS and Learning Technology Solutions | JFKC',
     description:
       'Learning technology solutions: LMS for corporate training, LXP, learning portals and integrations, including custom LMS development.',
     keywords:
@@ -116,7 +116,7 @@ export const seo = {
 export const getServiceSeo = (slug) => {
   const map = {
     'content-design': {
-      title: 'Instructional Design Services | ILT, VILT & eLearning | JFKC',
+      title: 'Instructional Design | ILT, VILT and eLearning | JFKC',
       description:
         'Instructional design services for ILT, VILT and eLearning. JF Knowledge Centre turns your subject matter into courses people finish and apply.',
       keywords:
@@ -132,7 +132,7 @@ export const getServiceSeo = (slug) => {
       path: '/services/recruitment-staffing',
     },
     'it-assets-amc': {
-      title: 'IT AMC & IT Asset Management Services | JF Knowledge Centre',
+      title: 'IT AMC and IT Asset Management Services | JFKC',
       description:
         'IT annual maintenance and asset management services from JF Knowledge Centre covering laptops, hardware and web support.',
       keywords:
@@ -140,7 +140,7 @@ export const getServiceSeo = (slug) => {
       path: '/services/it-assets-amc',
     },
     'cpa-bookkeeping': {
-      title: 'CPA Bookkeeping & Accounting Services | JF Knowledge Centre',
+      title: 'CPA Bookkeeping and Accounting Services | JFKC',
       description:
         'Bookkeeping and accounting services combining CPA expertise with AI-assisted workflows for clearer, faster financial reporting.',
       keywords:
@@ -148,7 +148,7 @@ export const getServiceSeo = (slug) => {
       path: '/services/cpa-bookkeeping',
     },
     'data-translation-localization': {
-      title: 'eLearning Translation & Localization | JF Knowledge Centre',
+      title: 'eLearning Translation and Localization | JFKC',
       description:
         'eLearning translation and localization services that adapt courses, voice-overs and on-screen text for global learners, plus data annotation support.',
       keywords:
@@ -156,7 +156,7 @@ export const getServiceSeo = (slug) => {
       path: '/services/data-translation-localization',
     },
     'digital-marketing': {
-      title: 'Digital Marketing Services | SEO & SMO | JF Knowledge Centre',
+      title: 'Digital Marketing Services | SEO and SMO | JFKC',
       description:
         'Digital marketing services from JF Knowledge Centre covering SEO, social media optimization and performance campaigns.',
       keywords:
@@ -164,7 +164,7 @@ export const getServiceSeo = (slug) => {
       path: '/services/digital-marketing',
     },
     'elearning-digital-innovation': {
-      title: 'Custom eLearning Development | Microlearning & Gamification',
+      title: 'Custom eLearning Development | Microlearning, Gamification',
       description:
         'Custom eLearning development services: microlearning, gamification, video-based and mobile learning built around your business goals.',
       keywords:
@@ -227,7 +227,7 @@ export const getIndustrySeo = (slug) => {
       path: '/portfolio/aviation-airlines',
     },
     'automobiles-manufacturing': {
-      title: 'Automotive & Manufacturing Training & eLearning | JFKC',
+      title: 'Automotive and Manufacturing Training | JFKC',
       description:
         'Custom eLearning and training for Automotive & Manufacturing teams: role-based courses, compliance and skills programmes by JF Knowledge Centre.',
       keywords:
@@ -243,7 +243,7 @@ export const getIndustrySeo = (slug) => {
       path: '/portfolio/oil-gas',
     },
     'it-business-intelligence': {
-      title: 'IT & Business Intelligence Training & eLearning | JFKC',
+      title: 'IT and Business Intelligence Training | JFKC',
       description:
         'Custom eLearning and training for IT & Business Intelligence teams: role-based courses, compliance and skills programmes by JF Knowledge Centre.',
       keywords:
@@ -275,7 +275,7 @@ export const getIndustrySeo = (slug) => {
       path: '/portfolio/telecommunications',
     },
     'government-public-sector': {
-      title: 'Government & Public Sector Training & eLearning | JFKC',
+      title: 'Government and Public Sector Training | JFKC',
       description:
         'Custom eLearning and training for Government & Public Sector teams: role-based courses, compliance and skills programmes by JF Knowledge Centre.',
       keywords:
