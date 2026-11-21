@@ -22,9 +22,9 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-function App() {
+export function AppShell() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Suspense
         fallback={
@@ -55,6 +55,14 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   );
 }
