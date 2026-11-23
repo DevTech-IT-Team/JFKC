@@ -9,9 +9,8 @@ const Hero = () => {
       {/* Full-bleed background — fills under navbar, no top gap */}
       <img
         src={heroImg}
-        alt=""
+        alt="Developer writing code on a laptop, with icons for cloud, analytics, and collaboration"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[35%_center] md:object-right md:object-top"
-        aria-hidden="true"
       />
 
       <div

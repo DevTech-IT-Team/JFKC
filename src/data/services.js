@@ -13,7 +13,7 @@ export const services = [
     slug: 'content-design',
     name: 'Content & Design Services',
     short: 'Content & Design',
-    pageTitle: 'Content Design & Instructional Design Services | ILT, VILT & E-Learning',
+    pageTitle: 'Instructional Design | ILT, VILT and eLearning | JFKC',
     text: 'We create and deliver high-impact learning and content for technical and non-technical teams, from strategy and design through delivery.',
     headline: 'Instructional Design and Content Design Services',
     lead: 'Most training content is forgettable. Ours isn’t.',
@@ -23,6 +23,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Workshop group planning instructional design around a conference table',
     Icon: PenTool,
     highlights: [
       'Instructor-Led Training (ILT) and Immersive ILT',
@@ -72,7 +73,7 @@ export const services = [
     slug: 'recruitment-staffing',
     name: 'Recruitment, Staffing & Staff Augmentation',
     short: 'Talent',
-    pageTitle: 'Recruitment, Staffing & Staff Augmentation Services',
+    pageTitle: 'Recruitment and Staff Augmentation Services | JFKC',
     text: 'We help organisations build and scale teams through recruitment, staffing, and staff augmentation, with flexible models that keep quality and cultural fit.',
     headline: 'Recruitment and Staff Augmentation Services',
     lead: 'Hiring the wrong person is expensive. Hiring slowly is even more costly.',
@@ -81,6 +82,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Colleagues talking together during a recruitment meeting',
     Icon: Users,
     highlights: [
       'Permanent recruitment and direct hire',
@@ -116,7 +118,7 @@ export const services = [
     slug: 'it-assets-amc',
     name: 'IT Assets & AMC Management',
     short: 'IT & AMC',
-    pageTitle: 'IT AMC & Asset Management Services | Laptops, Hardware & Website Support',
+    pageTitle: 'IT AMC and IT Asset Management Services | JFKC',
     text: 'We manage and support technology infrastructure — AMC, devices, software, and website maintenance — so teams can focus on core work.',
     headline: 'IT AMC and IT Asset Management Services',
     lead: 'When systems fail, productivity stops. When support is slow, frustration grows.',
@@ -125,6 +127,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1588508065123-287b28e013da?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'IT specialist supporting workplace laptops and hardware',
     Icon: MonitorCheck,
     highlights: [
       'Annual Maintenance Contract (AMC) for hardware',
@@ -161,7 +164,7 @@ export const services = [
     slug: 'cpa-bookkeeping',
     name: 'CPA – Bookkeeping & Accounting',
     short: 'CPA',
-    pageTitle: 'Bookkeeping & Accounting Services | Professional CPA Support',
+    pageTitle: 'CPA Bookkeeping and Accounting Services | JFKC',
     text: 'Professional bookkeeping and accounting support for day-to-day records, processes, and compliance-oriented financial clarity.',
     headline: 'Bookkeeping and Accounting Services',
     lead: 'Financial clarity is not optional — it is essential for growth.',
@@ -170,6 +173,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Accountant reviewing figures with a calculator and documents',
     Icon: Briefcase,
     highlights: [
       'Monthly bookkeeping',
@@ -204,7 +208,7 @@ export const services = [
     slug: 'data-translation-localization',
     name: 'Data Annotation, Translation & Localization',
     short: 'Data & Language',
-    pageTitle: 'Data Annotation, Translation & Localization Services',
+    pageTitle: 'eLearning Translation and Localization | JFKC',
     text: 'Data annotation, translation, and localization that prepare high-quality, culturally adapted, machine-ready content and datasets.',
     headline: 'eLearning Translation and Localization Services',
     lead: 'AI models are only as good as the data they learn from. Global content only works when it feels local.',
@@ -213,6 +217,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Person with a map planning content for global audiences',
     Icon: Languages,
     highlights: [
       'Data annotation services',
@@ -247,7 +252,7 @@ export const services = [
     slug: 'digital-marketing',
     name: 'Digital Marketing Services',
     short: 'Digital Marketing',
-    pageTitle: 'Digital Marketing Services | SEO, SMO & Performance Growth',
+    pageTitle: 'Digital Marketing Services | SEO and SMO | JFKC',
     text: 'Digital marketing that helps brands reach, engage, and convert audiences, with strategy and execution aligned to growth.',
     headline: 'Digital Marketing Services',
     lead: 'Getting attention is easy. Turning it into leads and revenue is the real challenge.',
@@ -256,6 +261,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Marketer reviewing campaign performance on a laptop',
     Icon: Megaphone,
     highlights: [
       'Search engine optimization (SEO)',
@@ -291,7 +297,7 @@ export const services = [
     slug: 'elearning-digital-innovation',
     name: 'E-Learning & Digital Innovation',
     short: 'E-Learning',
-    pageTitle: 'E-Learning Development | Microlearning, VILT, Gamification & Video',
+    pageTitle: 'Custom eLearning Development | Microlearning, Gamification',
     text: 'Modern digital learning — e-learning from Level 1 to 5, VILT, micro-learning, simulations, gamification, and professional video.',
     headline: 'Custom eLearning Development Services',
     lead: 'Long, boring courses lose learners. Engaging, well-designed digital learning keeps them.',
@@ -300,6 +306,7 @@ export const services = [
     ],
     image:
       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop',
+    imageAlt: 'Learner working through an online course on a laptop',
     Icon: Sparkles,
     highlights: [
       'E-learning courses from Level 1 to Level 5',

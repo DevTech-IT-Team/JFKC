@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getServiceBySlug, services } from '../data/services';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { getServiceSeo } from '../data/seo';
+import { serviceSchema } from '../data/schema';
 
 const CapabilityFlow = ({ items }) => {
   const count = items.length;
@@ -123,15 +123,6 @@ const ServiceDetail = () => {
   const service = getServiceBySlug(slug);
   const metadata = getServiceSeo(slug);
 
-  useEffect(() => {
-    if (!service) return undefined;
-    const previous = document.title;
-    document.title = service.pageTitle;
-    return () => {
-      document.title = previous;
-    };
-  }, [service]);
-
   if (!service) {
     return <Navigate to="/services" replace />;
   }
@@ -140,13 +131,12 @@ const ServiceDetail = () => {
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)] text-slate-800">
-      <SEO {...metadata} />
+      <SEO {...metadata} breadcrumbLabel={service.name} jsonLd={serviceSchema(service)} />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-16 sm:pt-32 sm:pb-20">
         <img
           src={service.image}
-          alt=""
+          alt={service.imageAlt || service.name}
           className="absolute inset-0 h-full w-full object-cover opacity-30"
-          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0c1220] via-[#0c1220]/92 to-[#0c1220]/70" />
         <div
@@ -356,7 +346,7 @@ const ServiceDetail = () => {
                 >
                   <img
                     src={item.image}
-                    alt=""
+                    alt={item.imageAlt || item.name}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />

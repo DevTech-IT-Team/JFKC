@@ -7,29 +7,12 @@ import VissionMission from '../components/Home/VissionMission';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
-
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'JF Knowledge Centre',
-  alternateName: 'JFKC',
-  url: 'https://jfknowledge.com/',
-  logo: 'https://jfknowledge.com/logobg.png',
-  email: 'info@jfknowledge.com',
-  telephone: '+91-9818238969',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'GF-41, Omaxe Square, Jasola District Centre',
-    addressLocality: 'New Delhi',
-    postalCode: '110025',
-    addressCountry: 'IN',
-  },
-};
+import { organizationSchema } from '../data/schema';
 
 const Home = () => {
   return (
     <>
-      <SEO {...seo.home} jsonLd={orgSchema} />
+      <SEO {...seo.home} jsonLd={organizationSchema} />
       <Hero />
       <About />
       <WhoWEAre />
