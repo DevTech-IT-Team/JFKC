@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getBlogBySlug } from '../data/blogs';
 import SEO from '../components/SEO';
+import { absoluteUrl, blogPostingSchema, faqPageSchema } from '../data/schema';
 
 const renderFormattedText = (text) => {
   if (typeof text !== 'string') return text;
@@ -66,13 +67,20 @@ const BlogDetail = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  const path = `/blog/${slug}`;
+  const faqSchema = faqPageSchema(post);
+  const structuredData = [blogPostingSchema(post, path), faqSchema].filter(Boolean);
+
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
       <SEO
         title={post.metaTitle || post.title}
         description={post.metaDescription || post.excerpt}
-        keywords={post.metaKeywords}
-        path={`/blog/${slug}`}
+        path={path}
+        image={absoluteUrl(post.image)}
+        ogType="article"
+        breadcrumbLabel={post.title}
+        jsonLd={structuredData}
       />
       <section className="relative overflow-hidden bg-[#0c1220] pt-28 pb-14 sm:pt-32">
         <div

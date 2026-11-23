@@ -19,14 +19,13 @@ const IndustryDetail = () => {
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
-      <SEO {...metadata} />
+      <SEO {...metadata} breadcrumbLabel={industry.name} />
       {/* Hero with image backdrop */}
       <section className="relative min-h-[52svh] overflow-hidden bg-[#0c1220] pt-28 sm:min-h-[56svh] sm:pt-32">
         <img
           src={industry.image}
-          alt=""
+          alt={industry.imageAlt || industry.name}
           className="absolute inset-0 h-full w-full object-cover"
-          aria-hidden="true"
         />
         <div
           className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/40"

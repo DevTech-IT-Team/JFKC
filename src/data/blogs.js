@@ -2262,6 +2262,7 @@ export const blogs = [
     date: 'October 19, 2026',
     readTime: '12 min',
     image: bookkeepingBanner,
+    imageAlt: 'CA and AI bookkeeping workflow for an international business',
     metaTitle: 'CA + AI Bookkeeping for International Businesses | JFKC',
     metaDescription:
       'Why international businesses are moving to CA + AI bookkeeping: faster record-keeping, clearer financial visibility and chartered accountant review.',
