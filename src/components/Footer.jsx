@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import logo from '../assets/logo.jpeg';
 
+const serviceLinks = [
+  { label: 'Training Modules', to: '/training-modules' },
+  { label: 'Training Delivery', to: '/training-delivery' },
+  { label: 'Immersive Learning', to: '/immersive-learning' },
+  { label: 'Learning Technology', to: '/learning-technology' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Products', to: '/products' },
+  { label: 'Services', to: '/services' },
+  { label: 'About', to: '/about' },
+];
+
 const generalLinks = [
-  // { label: 'Career', to: '/career' },
+  { label: 'Career', to: '/career' },
   { label: 'Contact Us', to: '/contact' },
   { label: 'Privacy Policy', to: '/privacy' },
   { label: 'Terms & Conditions', to: '/terms' },
@@ -44,7 +56,7 @@ const Footer = () => {
       <div className="pointer-events-none absolute -right-20 top-0 h-full w-1/2 bg-gradient-to-l from-orange-500/10 to-transparent" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-8 sm:px-6 lg:px-8 lg:pt-16">
-        <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 xl:grid-cols-4 xl:gap-12">
           {/* Brand + CTA */}
           <div className="space-y-5">
             <div className="inline-flex items-center rounded-md bg-white px-3 py-2.5 shadow-sm">
@@ -97,6 +109,25 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-lg font-bold text-white">Services :</h4>
+            <div className="mt-2 mb-5 h-0.5 w-14 bg-orange-500" />
+
+            <ul className="list-none space-y-3 text-sm text-white/85">
+              {serviceLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="transition-colors hover:text-orange-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* General links */}

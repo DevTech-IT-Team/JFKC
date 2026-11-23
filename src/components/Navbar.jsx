@@ -32,8 +32,9 @@ const Navbar = () => {
     location.pathname === '/immersive-learning' ||
     location.pathname === '/learning-technology';
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null); // 'training' | 'learning' | null
   const [scrolled, setScrolled] = useState(false);
+  const [suppressTraining, setSuppressTraining] = useState(false);
+  const [suppressLearning, setSuppressLearning] = useState(false);
 
   // Mobile sub-menu toggle handlers
   const [mobileTrainingOpen, setMobileTrainingOpen] = useState(false);
@@ -77,7 +78,7 @@ const Navbar = () => {
     : 'text-orange-400 bg-white/10';
 
   const navClass = (active) =>
-    `px-4 py-2 text-sm font-semibold transition-colors rounded-full ${
+    `whitespace-nowrap px-3 py-2 text-sm font-semibold transition-colors rounded-full ${
       active ? linkActive : linkBase
     }`;
   const mobileNavClass = (active) =>
@@ -118,7 +119,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden xl:flex items-center space-x-1">
             <Link
               to="/about"
               className={navClass(isAbout)}
@@ -162,155 +163,150 @@ const Navbar = () => {
               Blogs
             </Link>
 
-            {/* Training Dropdown
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('training')}
-              onMouseLeave={() => setActiveDropdown(null)}
+            {/* Training */}
+            <div
+              className="group/training relative"
+              onMouseLeave={() => setSuppressTraining(false)}
             >
-              <button 
-                className={`flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-full transition-all ${
-                  activeDropdown === 'training' || isTraining ? dropdownActive : linkBase
+              <button
+                type="button"
+                className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 text-sm font-semibold rounded-full transition-all ${
+                  isTraining ? dropdownActive : linkBase
                 }`}
+                aria-haspopup="true"
               >
                 Training
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'training' ? 'rotate-180 text-orange-500' : solid ? 'text-gray-400' : 'text-white/50'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 group-hover/training:rotate-180 group-hover/training:text-orange-500 ${isTraining ? 'text-orange-500' : solid ? 'text-gray-400' : 'text-white/50'}`} />
               </button>
 
-              {activeDropdown === 'training' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[650px] pt-4">
-                  <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden grid grid-cols-3 p-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="col-span-2 grid grid-cols-1 gap-1 p-1">
-                      <Link
-                        to="/training-modules"
-                        onClick={() => setActiveDropdown(null)}
-                        className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
-                      >
-                        <div className="rounded-xl bg-gray-100 p-2.5 text-gray-700 transition-colors group-hover:bg-gray-900 group-hover:text-white">
-                          <BookOpen className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
-                            Training Modules
-                          </h4>
-                          <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
-                            Customizable course modules, structured learning paths, and interactive quizzes.
-                          </p>
-                        </div>
-                      </Link>
-
-                      <Link
-                        to="/training-delivery"
-                        onClick={() => setActiveDropdown(null)}
-                        className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
-                      >
-                        <div className="rounded-xl bg-orange-100 p-2.5 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
-                          <GraduationCap className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
-                            Training Delivery
-                          </h4>
-                          <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
-                            Seamless instructor-led and self-paced live sessions with personalized feedback.
-                          </p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    <div className="bg-gray-900 rounded-2xl p-5 flex flex-col justify-between text-white relative overflow-hidden group">
+              <div className={`absolute top-full right-0 z-50 hidden w-[650px] pt-4 ${suppressTraining ? '!hidden' : 'group-hover/training:block'}`}>
+                <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden grid grid-cols-3 p-4 gap-4">
+                  <div className="col-span-2 grid grid-cols-1 gap-1 p-1">
+                    <Link
+                      to="/training-modules"
+                      onClick={() => setSuppressTraining(true)}
+                      className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
+                    >
+                      <div className="rounded-xl bg-gray-100 p-2.5 text-gray-700 transition-colors group-hover:bg-gray-900 group-hover:text-white">
+                        <BookOpen className="h-5 w-5" />
+                      </div>
                       <div>
-                        <span className="text-[10px] font-bold tracking-wider uppercase text-orange-400 bg-orange-500/10 px-2.5 py-1 rounded-full border border-orange-500/20">
-                          Featured
-                        </span>
-                        <h4 className="font-bold text-sm mt-3 text-white">Enterprise Training</h4>
-                        <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
-                          Boost workforce productivity with structured learning tracks.
+                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
+                          Training Modules
+                        </h4>
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                          Customizable course modules, structured learning paths, and interactive quizzes.
                         </p>
                       </div>
+                    </Link>
+
+                    <Link
+                      to="/training-delivery"
+                      onClick={() => setSuppressTraining(true)}
+                      className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
+                    >
+                      <div className="rounded-xl bg-orange-100 p-2.5 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
+                        <GraduationCap className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
+                          Training Delivery
+                        </h4>
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                          Seamless instructor-led and self-paced live sessions with personalized feedback.
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+
+                  <div className="bg-gray-900 rounded-2xl p-5 flex flex-col justify-between text-white relative overflow-hidden">
+                    <div>
+                      <span className="text-[10px] font-bold tracking-wider uppercase text-orange-400 bg-orange-500/10 px-2.5 py-1 rounded-full border border-orange-500/20">
+                        Featured
+                      </span>
+                      <h4 className="font-bold text-sm mt-3 text-white">Enterprise Training</h4>
+                      <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+                        Boost workforce productivity with structured learning tracks.
+                      </p>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
-            */}
 
-            {/* Learning Dropdown
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('learning')}
-              onMouseLeave={() => setActiveDropdown(null)}
+            <div
+              className="group/learning relative"
+              onMouseLeave={() => setSuppressLearning(false)}
             >
-              <button 
-                className={`flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-full transition-all ${
-                  activeDropdown === 'learning' || isLearning ? dropdownActive : linkBase
+              <button
+                type="button"
+                className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 text-sm font-semibold rounded-full transition-all ${
+                  isLearning ? dropdownActive : linkBase
                 }`}
+                aria-haspopup="true"
               >
                 Learning
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'learning' || isLearning ? 'rotate-180 text-orange-500' : solid ? 'text-gray-400' : 'text-white/50'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 group-hover/learning:rotate-180 group-hover/learning:text-orange-500 ${isLearning ? 'text-orange-500' : solid ? 'text-gray-400' : 'text-white/50'}`} />
               </button>
 
-              {activeDropdown === 'learning' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[650px] pt-4">
-                  <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden grid grid-cols-3 p-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="col-span-2 grid grid-cols-1 gap-1 p-1">
-                      <Link
-                        to="/immersive-learning"
-                        onClick={() => setActiveDropdown(null)}
-                        className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
-                      >
-                        <div className="rounded-xl bg-orange-100 p-2.5 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
-                          <Sparkles className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
-                            Immersive Learning
-                          </h4>
-                          <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
-                            Engage learners through AR/VR experiences, simulations, and gamified content.
-                          </p>
-                        </div>
-                      </Link>
-
-                      <Link
-                        to="/learning-technology"
-                        onClick={() => setActiveDropdown(null)}
-                        className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
-                      >
-                        <div className="rounded-xl bg-gray-100 p-2.5 text-gray-700 transition-colors group-hover:bg-gray-900 group-hover:text-white">
-                          <Cpu className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
-                            Learning Technology
-                          </h4>
-                          <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
-                            Next-gen AI analytics, LMS integration, and automated progress tracking.
-                          </p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    <div className="bg-gray-900 rounded-2xl p-5 flex flex-col justify-between text-white relative overflow-hidden group">
+              <div className={`absolute top-full right-0 z-50 hidden w-[650px] pt-4 ${suppressLearning ? '!hidden' : 'group-hover/learning:block'}`}>
+                <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden grid grid-cols-3 p-4 gap-4">
+                  <div className="col-span-2 grid grid-cols-1 gap-1 p-1">
+                    <Link
+                      to="/immersive-learning"
+                      onClick={() => setSuppressLearning(true)}
+                      className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
+                    >
+                      <div className="rounded-xl bg-orange-100 p-2.5 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
+                        <Sparkles className="h-5 w-5" />
+                      </div>
                       <div>
-                        <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-orange-500 px-2.5 py-1 rounded-full">
-                          Next-Gen
-                        </span>
-                        <h4 className="font-bold text-sm mt-3 text-white">AI Learning Tech</h4>
-                        <p className="text-xs text-gray-300 mt-1.5 leading-relaxed">
-                          Transform educational workflows with modern smart technology.
+                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
+                          Immersive Learning
+                        </h4>
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                          Engage learners through AR/VR experiences, simulations, and gamified content.
                         </p>
                       </div>
+                    </Link>
+
+                    <Link
+                      to="/learning-technology"
+                      onClick={() => setSuppressLearning(true)}
+                      className="group flex items-start gap-3.5 rounded-2xl p-3 transition-colors hover:bg-gray-50"
+                    >
+                      <div className="rounded-xl bg-gray-100 p-2.5 text-gray-700 transition-colors group-hover:bg-gray-900 group-hover:text-white">
+                        <Cpu className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-orange-500">
+                          Learning Technology
+                        </h4>
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                          Next-gen AI analytics, LMS integration, and automated progress tracking.
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+
+                  <div className="bg-gray-900 rounded-2xl p-5 flex flex-col justify-between text-white relative overflow-hidden">
+                    <div>
+                      <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-orange-500 px-2.5 py-1 rounded-full">
+                        Next-Gen
+                      </span>
+                      <h4 className="font-bold text-sm mt-3 text-white">AI Learning Tech</h4>
+                      <p className="text-xs text-gray-300 mt-1.5 leading-relaxed">
+                        Transform educational workflows with modern smart technology.
+                      </p>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
-            */}
           </div>
 
           {/* Action Button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden xl:flex items-center">
             <Link
               to="/contact"
               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-colors active:scale-95"
@@ -320,7 +316,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="lg:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 rounded-full transition-colors focus:outline-none ${
@@ -336,11 +332,10 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Popout Overlay Menu */}
-      {mobileMenuOpen && (
-        <div className={`lg:hidden mx-auto mt-2 rounded-2xl border border-white/40 bg-white/80 shadow-md backdrop-blur-xl p-4 space-y-1 animate-in fade-in slide-in-from-top-2 ${
-          solid ? 'max-w-5xl' : 'max-w-7xl'
-        }`}>
+      {/* Mobile menu */}
+      <div className={`mx-auto mt-2 space-y-1 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg ${
+        mobileMenuOpen ? 'xl:hidden' : 'hidden'
+      } ${solid ? 'max-w-5xl' : 'max-w-7xl'}`}>
           <Link
             to="/about"
             onClick={() => setMobileMenuOpen(false)}
@@ -386,69 +381,65 @@ const Navbar = () => {
             Blogs
           </Link>
 
-          {/* Mobile Training Dropdown
           <div>
             <button
+              type="button"
               onClick={() => setMobileTrainingOpen(!mobileTrainingOpen)}
               className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+              aria-expanded={mobileTrainingOpen}
             >
               <span>Training</span>
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileTrainingOpen ? 'rotate-180 text-orange-500' : 'text-gray-400'}`} />
             </button>
-            {mobileTrainingOpen && (
-              <div className="pl-4 pr-2 py-2 space-y-1 bg-gray-50 rounded-2xl mt-1 border border-gray-100">
-                <Link
-                  to="/training-delivery"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
-                >
-                  <GraduationCap className="h-4 w-4 text-orange-500" />
-                  Training Delivery
-                </Link>
-                <Link
-                  to="/training-modules"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
-                >
-                  <BookOpen className="h-4 w-4 text-gray-700" />
-                  Training Modules
-                </Link>
-              </div>
-            )}
+            <div className={`pl-4 pr-2 py-2 space-y-1 bg-gray-50 rounded-2xl mt-1 border border-gray-100 ${mobileTrainingOpen ? '' : 'hidden'}`}>
+              <Link
+                to="/training-delivery"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
+              >
+                <GraduationCap className="h-4 w-4 text-orange-500" />
+                Training Delivery
+              </Link>
+              <Link
+                to="/training-modules"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
+              >
+                <BookOpen className="h-4 w-4 text-gray-700" />
+                Training Modules
+              </Link>
+            </div>
           </div>
-          */}
 
-          {/* Mobile Learning Dropdown
           <div>
             <button
+              type="button"
               onClick={() => setMobileLearningOpen(!mobileLearningOpen)}
               className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+              aria-expanded={mobileLearningOpen}
             >
               <span>Learning</span>
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileLearningOpen ? 'rotate-180 text-orange-500' : 'text-gray-400'}`} />
             </button>
-            {mobileLearningOpen && (
-              <div className="pl-4 pr-2 py-2 space-y-1 bg-gray-50 rounded-2xl mt-1 border border-gray-100">
-                <Link
-                  to="/immersive-learning"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
-                >
-                  <Sparkles className="h-4 w-4 text-orange-500" />
-                  Immersive Learning
-                </Link>
-                <Link
-                  to="/learning-technology"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
-                >
-                  <Cpu className="h-4 w-4 text-gray-700" />
-                  Learning Technology
-                </Link>
-              </div>
-            )}
+            <div className={`pl-4 pr-2 py-2 space-y-1 bg-gray-50 rounded-2xl mt-1 border border-gray-100 ${mobileLearningOpen ? '' : 'hidden'}`}>
+              <Link
+                to="/immersive-learning"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
+              >
+                <Sparkles className="h-4 w-4 text-orange-500" />
+                Immersive Learning
+              </Link>
+              <Link
+                to="/learning-technology"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 rounded-xl p-2.5 text-sm font-medium text-gray-700 hover:text-orange-500"
+              >
+                <Cpu className="h-4 w-4 text-gray-700" />
+                Learning Technology
+              </Link>
+            </div>
           </div>
-          */}
 
           {/* Mobile Action Button */}
           <div className="pt-3 border-t border-gray-100 mt-2">
@@ -461,7 +452,6 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-      )}
     </header>
   );
 };

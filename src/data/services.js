@@ -68,6 +68,12 @@ export const services = [
     ],
     closing: 'Ready to create content that delivers results?',
     ctas: ['Talk to our content design team', 'Request a sample'],
+    bodyLinks: [
+      { phrase: 'Virtual Instructor-Led Training', to: '/training-delivery' },
+      { phrase: 'Instructor-Led Training', to: '/training-delivery' },
+      { phrase: 'e-learning modules', to: '/training-modules' },
+      { phrase: 'Immersive ILT', to: '/immersive-learning' },
+    ],
   },
   {
     slug: 'recruitment-staffing',
@@ -247,6 +253,7 @@ export const services = [
     ],
     closing: 'Need precise data or culturally right content?',
     ctas: ['Request a project quote', 'Discuss your requirements'],
+    bodyLinks: [{ phrase: 'learning materials', to: '/training-modules' }],
   },
   {
     slug: 'digital-marketing',
@@ -351,6 +358,14 @@ export const services = [
     ],
     closing: 'Create learning that people actually finish and apply.',
     ctas: ['View our e-learning work', 'Start a project discussion'],
+    bodyLinks: [
+      { phrase: 'Custom e-learning courses (Level 1 to Level 5)', to: '/training-modules' },
+      { phrase: 'Virtual instructor-led training (VILT)', to: '/training-delivery' },
+      { phrase: 'micro-learning', to: '/training-delivery' },
+      { phrase: 'simulations', to: '/immersive-learning' },
+      { phrase: 'Gamification', to: '/immersive-learning' },
+      { phrase: 'LMS-ready', to: '/learning-technology' },
+    ],
   },
 ];
 
