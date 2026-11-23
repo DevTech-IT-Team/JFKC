@@ -301,8 +301,8 @@ body {
 }
 
 .navbar-shell--solid {
-  width: 90%;
-  max-width: 64rem; /* ~max-w-5xl */
+  width: 94%;
+  max-width: 76rem;
 }
 
 .navbar-shell__glass {
@@ -320,8 +320,11 @@ body {
 
 .navbar-shell--solid .navbar-shell__glass {
   opacity: 1;
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 /* :root {

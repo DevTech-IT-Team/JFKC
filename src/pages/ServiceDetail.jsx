@@ -6,7 +6,42 @@ import SEO from '../components/SEO';
 import { getServiceSeo } from '../data/seo';
 import { serviceSchema } from '../data/schema';
 
-const CapabilityFlow = ({ items }) => {
+const bodyLinkClass =
+  'font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4 hover:text-orange-600';
+
+const linkify = (text, phrases = []) => {
+  if (!text || !phrases.length) return text;
+  const sorted = [...phrases].sort((a, b) => b.phrase.length - a.phrase.length);
+  const destination = new Map(sorted.map((item) => [item.phrase.toLowerCase(), item.to]));
+  const pattern = new RegExp(
+    sorted.map((item) => item.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'),
+    'gi',
+  );
+  const seen = new Set();
+  const nodes = [];
+  let cursor = 0;
+
+  for (const match of text.matchAll(pattern)) {
+    const phrase = match[0];
+    const key = phrase.toLowerCase();
+    const start = match.index ?? 0;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    nodes.push(
+      <Link key={`${key}-${start}`} to={destination.get(key)} className={bodyLinkClass}>
+        {phrase}
+      </Link>,
+    );
+    cursor = start + phrase.length;
+  }
+
+  if (!nodes.length) return text;
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+};
+
+const CapabilityFlow = ({ items, phrases }) => {
   const count = items.length;
   const width = 1200;
   const height = 180;
@@ -31,7 +66,7 @@ const CapabilityFlow = ({ items }) => {
             <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <span className="text-sm leading-relaxed text-slate-700">{item}</span>
+            <span className="text-sm leading-relaxed text-slate-700">{linkify(item, phrases)}</span>
           </li>
         ))}
       </ol>
@@ -48,7 +83,7 @@ const CapabilityFlow = ({ items }) => {
                 index % 2 === 0 ? '' : 'invisible'
               }`}
             >
-              {item}
+              {linkify(item, phrases)}
             </p>
           ))}
         </div>
@@ -109,7 +144,7 @@ const CapabilityFlow = ({ items }) => {
                 index % 2 === 1 ? '' : 'invisible'
               }`}
             >
-              {item}
+              {linkify(item, phrases)}
             </p>
           ))}
         </div>
@@ -201,7 +236,7 @@ const ServiceDetail = () => {
                         : 'text-base leading-relaxed text-slate-600'
                     }
                   >
-                    {paragraph}
+                    {linkify(paragraph, service.bodyLinks)}
                   </p>
                 ))}
               </div>
@@ -233,7 +268,7 @@ const ServiceDetail = () => {
           <h2 className="mt-3 max-w-xl text-2xl tracking-tight text-slate-900 sm:text-3xl">
             What this service covers
           </h2>
-          <CapabilityFlow items={service.highlights} />
+          <CapabilityFlow items={service.highlights} phrases={service.bodyLinks} />
         </div>
       </section>
 
@@ -258,7 +293,9 @@ const ServiceDetail = () => {
                         <span className="text-sm font-semibold tabular-nums text-orange-500">
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <p className="mt-2 text-sm font-semibold leading-snug">{item}</p>
+                        <p className="mt-2 text-sm font-semibold leading-snug">
+                          {linkify(item, service.bodyLinks)}
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -280,7 +317,7 @@ const ServiceDetail = () => {
                       key={item}
                       className="border-l-2 border-orange-400 pl-4 text-sm leading-relaxed text-slate-600"
                     >
-                      {item}
+                      {linkify(item, service.bodyLinks)}
                     </li>
                   ))}
                 </ul>
