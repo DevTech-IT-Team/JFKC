@@ -83,7 +83,7 @@ const VisionMissionValues = () => {
 
                 <div className="mb-3 flex items-center gap-2">
                   <span
-                    className={`text-[11px] font-bold tracking-widest uppercase ${
+                    className={`text-xs font-bold tracking-widest uppercase ${
                       isOrange ? 'text-white/70' : 'text-orange-400'
                     }`}
                   >

@@ -43,10 +43,14 @@ const Blog = () => {
                 src={featured.image}
                 alt={featured.imageAlt || featured.title}
                 className="absolute inset-0 h-full w-full object-cover"
+                width={800}
+                height={450}
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-              <p className="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase">
+              <p className="text-xs font-semibold tracking-[0.16em] text-orange-600 uppercase">
                 {featured.category}
               </p>
               <h2 className="mt-3 text-2xl tracking-tight text-slate-900 sm:text-3xl">
@@ -56,8 +60,8 @@ const Blog = () => {
                 {featured.excerpt}
               </p>
               <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-xs text-slate-400">{featured.date}</p>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-orange-500">
+                <p className="text-xs font-medium text-slate-600">{featured.date}</p>
+                <span className="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-orange-600">
                   Read journal
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
@@ -78,11 +82,15 @@ const Blog = () => {
                     src={item.image}
                     alt={item.imageAlt || item.title}
                     className="h-full w-full object-cover"
+                    width={640}
+                    height={360}
+                    loading="lazy"
+                    decoding="async"
                   />
-                  <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-700 uppercase">
+                  <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold tracking-wide text-slate-700 uppercase">
                     {item.category}
                   </span>
-                  <span className="absolute right-3 bottom-3 rounded-full bg-slate-900/80 px-2.5 py-1 text-[11px] font-medium text-white">
+                  <span className="absolute right-3 bottom-3 rounded-full bg-slate-900/80 px-2.5 py-1 text-xs font-medium text-white">
                     {item.readTime}
                   </span>
                 </Link>
@@ -96,10 +104,10 @@ const Blog = () => {
                     {item.excerpt}
                   </p>
                   <div className="mt-5 flex items-center justify-between">
-                    <p className="text-xs text-slate-400">{item.date}</p>
+                    <p className="text-xs font-medium text-slate-600">{item.date}</p>
                     <Link
                       to={`/blog/${item.slug}`}
-                      className="text-sm font-semibold text-orange-500 hover:text-orange-600"
+                      className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-sm font-semibold text-orange-600 hover:text-orange-700"
                     >
                       View
                     </Link>

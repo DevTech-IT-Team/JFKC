@@ -1,8 +1,8 @@
-import cpaBanner from '../assets/blogs/jfkc blog banner 26 oct.png';
-import bookkeepingBanner from '../assets/blogs/From Bookkeeping Stress to Smart Success.png';
-import hybridModelBanner from '../assets/blogs/How the JFKC Hybrid Model Works.png';
-import delayedReportingBanner from '../assets/jfkc blog banner 23 oct.png';
-import customLearningBanner from '../assets/JFKC blog banner 6 nov (2).png';
+import cpaBanner from '../assets/blogs/jfkc blog banner 26 oct.webp';
+import bookkeepingBanner from '../assets/blogs/From Bookkeeping Stress to Smart Success.webp';
+import hybridModelBanner from '../assets/blogs/How the JFKC Hybrid Model Works.webp';
+import delayedReportingBanner from '../assets/jfkc blog banner 23 oct.webp';
+import customLearningBanner from '../assets/JFKC blog banner 6 nov (2).webp';
 import alignTrainingBanner from '../assets/blogs/10_nov_blog.webp';
 
 export const blogCategories = [
