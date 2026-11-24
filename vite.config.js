@@ -1,14 +1,21 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import { previewPrerenderedRoutes } from './scripts/preview-prerendered-routes.mjs'
+
+const allowedHosts = ['jfknowledge.com', 'www.jfknowledge.com']
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
+    previewPrerenderedRoutes(),
   ],
-  build: {
-    manifest: true,
+  server: {
+    allowedHosts,
   },
   preview: {
-    allowedHosts: ['jfknowledge.com', 'www.jfknowledge.com'],
-
+    allowedHosts,
+  },
+  build: {
+    manifest: true,
   },
 })
