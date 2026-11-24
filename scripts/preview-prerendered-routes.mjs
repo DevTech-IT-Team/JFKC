@@ -3,15 +3,38 @@ import path from 'node:path'
 
 // Vite preview looks up an extensionless URL as a file, then as `$uri.html`.
 // It serves `$uri/index.html` only when the URL already ends with `/`.
-// Prerender writes `dist/<route>/index.html`, and the sitemap URLs have no
-// trailing slash, so `/about` missed `dist/about/index.html` and the SPA
-// fallback rewrote it to `dist/index.html` (the homepage).
+// Prerender writes `dist/<route>/index.html` and `dist/<route>.html`. The
+// sitemap URLs and their canonicals have no trailing slash, so a request for
+// `/about/` must not fall through to `dist/index.html` (the homepage).
 //
-// This runs before that fallback. A slashless route is rewritten to its
-// prerendered file. Anything that is not a real file, and not one unknown
-// slug under /blog, /services, or /portfolio, is a 404 with dist/404.html.
+// This runs before that fallback.
+// - The legacy paths below 301 to the current page. The query string is kept.
+// - `/route/` 301s to `/route` when that prerendered file (or another real
+//   file) exists, which matches the canonical. `/` is left as it is.
+// - A slashless route is rewritten to its prerendered file.
+// - One unknown slug under /blog, /services, or /portfolio still boots the
+//   app. Every other miss is a 404 with dist/404.html.
 
 const DYNAMIC_SLUG = /^\/(?:blog|portfolio|services)\/[^/]+\/?$/
+
+// Exact paths, plus at least one extra character under the old prefixes.
+// `/about-us/` and `/product_detail` alone are not in this list.
+const LEGACY_REDIRECTS = [
+  [/^\/about-us$/, '/about'],
+  [/^\/about-us-menu\/.+/, '/about'],
+  [/^\/term_conditions$/, '/terms'],
+  [/^\/term_conditions\/.+/, '/terms'],
+  [/^\/careers$/, '/career'],
+  [/^\/careers\/.+/, '/career'],
+  [/^\/product_detail\/.+/, '/products'],
+]
+
+const legacyTarget = (pathname) => {
+  for (const [pattern, target] of LEGACY_REDIRECTS) {
+    if (pattern.test(pathname)) return target
+  }
+  return null
+}
 
 const isInside = (root, file) => {
   const relative = path.relative(root, file)
@@ -54,6 +77,23 @@ const sendHtmlNotFound = (req, res, distDir) => {
   stream.pipe(res)
 }
 
+const sendRedirect = (res, location) => {
+  res.statusCode = 301
+  res.setHeader('Location', location)
+  res.end()
+}
+
+// The file a slashless path would serve: the path itself, `<path>/index.html`,
+// or `<path>.html`. `/` maps to `index.html`.
+const pageFile = (distDir, pathname) => {
+  const bare = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+  const rel = bare.replace(/^\/+/, '')
+  const exact = rel ? asFile(distDir, rel) : null
+  const indexHtml = asFile(distDir, rel ? `${rel}/index.html` : 'index.html')
+  const flatHtml = rel && !path.posix.extname(rel) ? asFile(distDir, `${rel}.html`) : null
+  return { bare, file: exact || indexHtml || flatHtml }
+}
+
 export function previewPrerenderedRoutes() {
   return {
     name: 'preview-prerendered-routes',
@@ -84,15 +124,26 @@ export function previewPrerenderedRoutes() {
           return
         }
 
-        const bare = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
-        const rel = bare.replace(/^\/+/, '')
-        const exact = rel ? asFile(distDir, rel) : null
-        const indexHtml = asFile(distDir, rel ? `${rel}/index.html` : 'index.html')
-        const flatHtml = rel && !path.posix.extname(rel) ? asFile(distDir, `${rel}.html`) : null
-        const match = exact || indexHtml || flatHtml
+        const legacy = legacyTarget(pathname)
+        if (legacy) {
+          sendRedirect(res, `${legacy}${search}`)
+          return
+        }
 
-        if (match) {
-          const urlPath = `/${path.relative(distDir, match).split(path.sep).join('/')}`
+        // One trailing slash, and only when the slashless path is a real file.
+        // Unknown URLs are not redirected; they 404 below.
+        if (pathname.length > 1 && pathname.endsWith('/') && !pathname.includes('//') && !pathname.split('/').includes('..')) {
+          const slashless = pathname.slice(0, -1)
+          if (pageFile(distDir, slashless).file) {
+            sendRedirect(res, `${slashless}${search}`)
+            return
+          }
+        }
+
+        const { bare, file } = pageFile(distDir, pathname)
+
+        if (file) {
+          const urlPath = `/${path.relative(distDir, file).split(path.sep).join('/')}`
           // dist/404.html is the error document. /404 must not serve it as HTTP 200.
           if (urlPath === '/404.html' && bare !== '/404.html') {
             sendHtmlNotFound(req, res, distDir)
