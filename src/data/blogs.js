@@ -828,9 +828,9 @@ export const blogs = [
     readTime: '10 min',
     image: customLearningBanner,
     imageAlt: 'Custom e-learning vs off-the-shelf training — JF Knowledge Centre',
-    metaTitle: 'Custom eLearning vs Off-the-Shelf Training: Which Fits?',
+    metaTitle: 'Off-the-Shelf eLearning vs Custom Training: Which Fits?',
     metaDescription:
-      'Compare custom e-learning and off-the-shelf training by cost, flexibility, development time and business needs to choose the right approach.',
+      'What off-the-shelf eLearning content and training courses are, how they compare with custom eLearning on cost, speed and fit, and when to combine both.',
     metaKeywords:
       'custom e-learning vs off-the-shelf training, custom e-learning solutions, off-the-shelf training, corporate e-learning, custom online training, employee training solutions, e-learning development, business training programmes, learning and development strategy, custom corporate training',
     cta: 'Explore JFKC Custom Learning services',
@@ -918,6 +918,25 @@ export const blogs = [
           'Faster deployment for large employee groups.',
           'Standardised learning content for foundational training.',
         ],
+      },
+      { type: 'h3', text: 'What Off-the-Shelf eLearning Content Usually Includes' },
+      {
+        type: 'p',
+        text: 'Off-the-shelf eLearning content is usually sold or licensed as a catalogue of ready-made courses, often packaged in SCORM or xAPI format so it can be uploaded to most learning management systems. Common formats include short video lessons, interactive modules, quizzes and downloadable job aids.',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Workplace compliance and safety awareness courses.',
+          'Soft-skills topics such as communication, teamwork and time management.',
+          'Leadership and management fundamentals.',
+          'Software and productivity skills.',
+          'General onboarding topics that apply across many organisations.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Some off-the-shelf training courses can be lightly edited, for example by adding a company logo, an introduction or a short policy section. Deeper changes usually need custom development.',
       },
       { type: 'h2', text: 'Custom E-Learning vs. Off-the-Shelf Training: Key Differences' },
       {
@@ -1102,6 +1121,18 @@ export const blogs = [
           {
             q: 'Which approach is better for employee onboarding?',
             a: 'Custom e-learning is often useful for company-specific onboarding because it can include internal processes, workplace policies, company culture and system demonstrations. Off-the-shelf courses can supplement it with general professional skills.',
+          },
+          {
+            q: 'What is off-the-shelf eLearning content?',
+            a: 'Off-the-shelf eLearning content is a set of ready-made online courses designed for a broad audience. Organisations license or buy it and assign it through their LMS, rather than building the course themselves.',
+          },
+          {
+            q: 'What are off-the-shelf training courses used for?',
+            a: 'They are commonly used for general topics such as compliance awareness, workplace safety, soft skills and software skills, where the same content suits many organisations.',
+          },
+          {
+            q: 'Can off-the-shelf eLearning be customised?',
+            a: 'Often only lightly, for example with branding or a short company-specific introduction. When training needs to reflect internal processes, products or systems, custom eLearning or a hybrid of both is usually more suitable.',
           },
         ],
       },
@@ -1453,7 +1484,7 @@ export const blogs = [
     image: delayedReportingBanner,
     imageAlt:
       'Problem vs Solution: delayed financial visibility compared with timely CA and AI reporting',
-    metaTitle: 'Delayed Financial Reporting: How CA + AI Improves Visibility',
+    metaTitle: 'Delayed Financial Reporting: Causes and How to Fix It',
     metaDescription:
       'Discover how delayed financial reporting affects business decisions and how CA + AI can improve reporting speed, accuracy and financial visibility.',
     metaKeywords:
@@ -1866,6 +1897,14 @@ export const blogs = [
           {
             q: 'How can international businesses measure reporting efficiency?',
             a: 'They can track month-end close time, report delivery deadlines, reconciliation completion, unresolved exceptions, correction rates and document submission delays. Reviewing these KPIs over time helps identify where improvements are needed.',
+          },
+          {
+            q: 'Why do finance reports take so long?',
+            a: 'Common reasons include late or missing source documents, manual data entry, bank and account reconciliations that are left until month-end, unclear approval steps and corrections found late in the close. Fixing the slowest of these steps first usually has the biggest effect on reporting time.',
+          },
+          {
+            q: 'How can finance teams shorten the time between month-end and reports?',
+            a: 'Many teams use a month-end close checklist, reconcile key accounts weekly instead of only at month-end, set document cut-off dates and use software to capture invoices and match transactions, with an accountant reviewing the results.',
           },
         ],
       },
