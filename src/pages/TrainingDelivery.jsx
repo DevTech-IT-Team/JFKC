@@ -101,7 +101,7 @@ const TrainingDelivery = () => {
               From interactive videos and micro-learning to blended, personalized,
               ILT, and VILT — delivery formats built for how modern teams learn.
             </p>
-            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase sm:text-[0.7rem]">
+            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase">
               Digital <span className="mx-2 text-orange-400/50">•</span> Live{' '}
               <span className="mx-2 text-orange-400/50">•</span> Hybrid
             </p>
@@ -147,7 +147,7 @@ const TrainingDelivery = () => {
                     }`}
                   >
                     <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
                         isActive
                           ? 'bg-white/20 text-white'
                           : 'bg-orange-100 text-orange-600'
@@ -169,6 +169,10 @@ const TrainingDelivery = () => {
                   src={current.image}
                   alt={current.name}
                   className="absolute inset-0 h-full w-full object-cover"
+                  width={700}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/35 to-transparent"

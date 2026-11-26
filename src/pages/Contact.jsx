@@ -134,7 +134,7 @@ const Contact = () => {
                       href={href}
                       target={href.startsWith('http') ? '_blank' : undefined}
                       rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                      className="mt-1 block text-base font-medium text-slate-800 transition-colors hover:text-orange-500"
+                      className="mt-1 inline-flex min-h-[44px] items-center text-base font-medium text-slate-800 transition-colors hover:text-orange-600"
                     >
                       {value}
                     </a>
@@ -282,7 +282,7 @@ const Contact = () => {
               href="https://maps.google.com/?q=Omaxe+Square+Jasola+District+Centre+New+Delhi"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-colors hover:text-orange-600"
+              className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700"
             >
               Open in Google Maps
               <ArrowRight className="h-4 w-4" />
@@ -294,6 +294,8 @@ const Contact = () => {
               title="JF Knowledge Centre — Omaxe Square, Jasola, New Delhi"
               src={MAP_EMBED}
               className="h-[320px] w-full border-0 sm:h-[420px] lg:h-[480px]"
+              width="100%"
+              height="480"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

@@ -90,7 +90,7 @@ const BlogDetail = () => {
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-500"
           >
             <ArrowLeft className="h-4 w-4" />
             Go to all blogs
@@ -114,7 +114,11 @@ const BlogDetail = () => {
         <img
           src={post.image}
           alt={post.imageAlt || post.title}
-          className="mb-10 w-full rounded-2xl"
+          className="mb-10 w-full rounded-2xl aspect-[16/9] object-cover"
+          width={1200}
+          height={675}
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="space-y-5 text-base leading-relaxed text-slate-600">
           {post.body.map((block, index) => {
@@ -212,7 +216,7 @@ const BlogDetail = () => {
                 <Link
                   key={`cta-${index}`}
                   to={ctaTarget}
-                  className="mt-2 inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-400"
+                  className="mt-2 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-orange-600 px-6 py-3 text-sm font-semibold text-white hover:bg-orange-500"
                 >
                   {block.label || post.cta || 'Schedule a consultation'}
                   <ArrowUpRight className="h-4 w-4" />
@@ -257,7 +261,7 @@ const BlogDetail = () => {
         <div className="mt-12 border-t border-slate-200 pt-8">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-500"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-500"
           >
             <ArrowLeft className="h-4 w-4" />
             Go to all blogs

@@ -94,7 +94,7 @@ const LearningTechnology = () => {
               LXP, LMS, portals, interactive video, speed learning, migration, and
               authoring expertise — technology that makes learning scalable.
             </p>
-            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase sm:text-[0.7rem]">
+            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase">
               Platforms <span className="mx-2 text-orange-400/50">•</span> Content{' '}
               <span className="mx-2 text-orange-400/50">•</span> Migration
             </p>
@@ -126,6 +126,10 @@ const LearningTechnology = () => {
                   src={current.image}
                   alt={current.name}
                   className="absolute inset-0 h-full w-full object-cover"
+                  width={700}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/35 to-transparent"
@@ -147,7 +151,7 @@ const LearningTechnology = () => {
                       href={current.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
+                      className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
                     >
                       {current.linkLabel || current.link}
                       <span aria-hidden="true">→</span>
@@ -179,7 +183,7 @@ const LearningTechnology = () => {
                     }`}
                   >
                     <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
                         isActive
                           ? 'bg-white/20 text-white'
                           : 'bg-orange-100 text-orange-600'

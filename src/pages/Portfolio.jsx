@@ -35,7 +35,7 @@ const Portfolio = () => {
               government, and enterprise learning — built for real-world skills and
               measurable impact.
             </p>
-            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase sm:text-[0.7rem]">
+            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase">
               Learning <span className="mx-2 text-orange-400/50">•</span> Industries{' '}
               <span className="mx-2 text-orange-400/50">•</span> Samples
             </p>
@@ -84,18 +84,22 @@ const Portfolio = () => {
                       src={item.image}
                       alt={item.name}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div
                       className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent"
                       aria-hidden="true"
                     />
-                    <span className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold tracking-wider text-slate-800 backdrop-blur-sm">
+                    <span className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold tracking-wider text-slate-800 backdrop-blur-sm">
                       {num}
                     </span>
                     <button
                       type="button"
                       onClick={() => setActiveVideo(item)}
-                      className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2.5 text-xs font-semibold text-white shadow-lg transition-colors hover:bg-orange-400 sm:bottom-6 sm:left-6"
+                      className="absolute bottom-5 left-5 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-xs font-semibold text-white shadow-lg transition-colors hover:bg-orange-400 sm:bottom-6 sm:left-6"
                     >
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
                         <Play className="h-3.5 w-3.5 fill-current" />
@@ -115,7 +119,7 @@ const Portfolio = () => {
                     </p>
                     <Link
                       to={`/portfolio/${item.slug}`}
-                      className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-500"
+                      className="mt-6 inline-flex min-h-[44px] w-fit items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700"
                     >
                       View details &amp; sample
                       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo.webp';
 
 const generalLinks = [
   // { label: 'Career', to: '/career' },
@@ -30,7 +30,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-[#0a0a12] font-[family-name:var(--font-display)] text-white">
+    <footer className="relative min-h-[460px] overflow-hidden bg-[#0a0a12] font-[family-name:var(--font-display)] text-white">
       {/* Diagonal texture */}
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -48,7 +48,15 @@ const Footer = () => {
           {/* Brand + CTA */}
           <div className="space-y-5">
             <div className="inline-flex items-center rounded-md bg-white px-3 py-2.5 shadow-sm">
-              <img src={logo} alt="JF Knowledge Centre" className="h-10 w-auto max-h-12 object-contain" />
+              <img
+                src={logo}
+                alt="JF Knowledge Centre"
+                className="h-10 w-auto max-h-12 object-contain"
+                width={180}
+                height={40}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <p className="text-base text-white/90">Your Reliable Knowledge Partner</p>
@@ -71,25 +79,31 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-orange-500" />
-                <a href="tel:+919818238969" className="transition-colors hover:text-orange-400">
+                <a
+                  href="tel:+919818238969"
+                  className="inline-flex min-h-[44px] items-center transition-colors hover:text-orange-400"
+                >
                   +91 9818238969
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-orange-500" />
-                <a href="mailto:info@jfknowledge.com" className="transition-colors hover:text-orange-400">
+                <a
+                  href="mailto:info@jfknowledge.com"
+                  className="inline-flex min-h-[44px] items-center transition-colors hover:text-orange-400"
+                >
                   info@jfknowledge.com
                 </a>
               </li>
             </ul>
 
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ label, href, path }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="text-white/80 transition-colors hover:text-orange-400"
+                  className="flex h-11 w-11 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-orange-400"
                 >
                   <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={path} />
@@ -104,20 +118,20 @@ const Footer = () => {
             <h4 className="text-lg font-bold text-white">General :</h4>
             <div className="mt-2 mb-5 h-0.5 w-14 bg-orange-500" />
 
-            <ul className="list-none space-y-3 text-sm text-white/85">
+            <ul className="list-none space-y-2 text-sm text-white/85">
               {generalLinks.map((link) => (
                 <li key={link.label}>
                   {link.to ? (
                     <Link
                       to={link.to}
-                      className="transition-colors hover:text-orange-400"
+                      className="inline-flex min-h-[44px] items-center transition-colors hover:text-orange-400"
                     >
                       {link.label}
                     </Link>
                   ) : (
                     <a
                       href={link.href}
-                      className="transition-colors hover:text-orange-400"
+                      className="inline-flex min-h-[44px] items-center transition-colors hover:text-orange-400"
                     >
                       {link.label}
                     </a>

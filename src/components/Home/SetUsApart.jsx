@@ -13,6 +13,10 @@ const IndustryCard = ({ industry }) => (
         src={industry.image}
         alt={industry.name}
         className="h-full w-full object-cover transition-transform duration-600 ease-out group-hover:scale-105"
+        width={300}
+        height={240}
+        loading="lazy"
+        decoding="async"
       />
       <div
         className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"
@@ -55,14 +59,14 @@ const WhatSetsUsApart = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-10 bg-orange-200 sm:w-14" />
-            <p className="text-xs font-bold tracking-[0.2em] text-orange-500 uppercase">
+            <p className="text-xs font-bold tracking-[0.2em] text-orange-600 uppercase">
               Our Portfolio &amp; Samples
             </p>
             <span className="h-px w-10 bg-orange-200 sm:w-14" />
           </div>
           <h2 className="text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             We Shape Learning Across{' '}
-            <span className="text-orange-500">Industries</span>
+            <span className="text-orange-600">Industries</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
             Explore industry samples — hover for a quick look, click for full details and video.

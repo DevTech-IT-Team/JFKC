@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import heroImg from '../../assets/bg3.png';
+import heroImg from '../../assets/bg3.webp';
 
 const Hero = () => {
   return (
@@ -11,6 +11,10 @@ const Hero = () => {
         src={heroImg}
         alt="Developer writing code on a laptop, with icons for cloud, analytics, and collaboration"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[35%_center] md:object-right md:object-top"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+        decoding="async"
       />
 
       <div

@@ -41,7 +41,7 @@ const About = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem]">
-            Why <span className="text-orange-500">JFKC</span>
+            Why <span className="text-orange-600">JFKC</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-500 sm:text-lg">
             Three pillars that define how we design learning experiences for modern teams.
@@ -59,6 +59,10 @@ const About = () => {
                 src={item.image}
                 alt={item.alt}
                 className="absolute inset-0 h-full w-full scale-110 object-cover blur-[2px] transition-transform duration-700 group-hover:scale-[1.15]"
+                width={600}
+                height={340}
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80" />
               <div className="absolute inset-0 bg-gradient-to-t from-orange-950/30 via-transparent to-transparent opacity-80" />

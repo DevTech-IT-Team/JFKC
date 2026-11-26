@@ -58,6 +58,10 @@ const WhoWeAre = () => {
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
                 alt="JFKC team collaborating on e-learning and LMS solutions"
                 className="absolute inset-0 h-full w-full object-cover"
+                width={700}
+                height={525}
+                loading="lazy"
+                decoding="async"
               />
               <div
                 className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 via-transparent to-transparent"
@@ -66,7 +70,7 @@ const WhoWeAre = () => {
 
               {/* Floating brand chip on image */}
               <div className="absolute bottom-5 left-5 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur-sm sm:bottom-6 sm:left-6">
-                <p className="text-xs font-bold tracking-[0.16em] text-orange-500 uppercase">
+                <p className="text-xs font-bold tracking-[0.16em] text-orange-600 uppercase">
                   Since day one
                 </p>
                 <p className="mt-0.5 text-sm font-semibold text-slate-900">
@@ -79,7 +83,7 @@ const WhoWeAre = () => {
           {/* Story panel — overlaps on desktop */}
           <div className="relative z-10 flex lg:col-span-5 lg:-ml-10 lg:items-center">
             <div className="w-full rounded-[1.75rem] bg-white p-6 ring-1 ring-slate-200/80 sm:p-8 lg:p-9">
-              <p className="text-4xl font-bold tracking-[-0.04em] text-orange-500 sm:text-5xl">
+              <p className="text-4xl font-bold tracking-[-0.04em] text-orange-600 sm:text-5xl">
                 JFKC
               </p>
               <p className="mt-1 text-sm font-semibold text-slate-800">
@@ -88,7 +92,7 @@ const WhoWeAre = () => {
 
               <p className="mt-6 text-base font-semibold leading-relaxed text-slate-900 sm:text-lg">
                 We build high-quality e-learning modules and power them with{' '}
-                <span className="text-orange-500">Athena</span> — our AI-powered LMS.
+                <span className="text-orange-600">Athena</span> — our AI-powered LMS.
               </p>
 
               <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">
@@ -98,7 +102,7 @@ const WhoWeAre = () => {
                   href="https://lmsathena.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="font-semibold text-orange-500 underline-offset-2 transition-colors hover:text-orange-600 hover:underline"
+                  className="font-semibold text-orange-600 underline-offset-2 transition-colors hover:text-orange-700 hover:underline"
                 >
                   lmsathena.com
                 </a>
@@ -120,7 +124,7 @@ const WhoWeAre = () => {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-orange-600 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-500"
                 >
                   Let&apos;s Collaborate
                   <ArrowRight className="h-4 w-4" />
@@ -129,7 +133,7 @@ const WhoWeAre = () => {
                   href="https://lmsathena.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-6 py-3.5 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-100"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-6 py-3.5 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-100"
                 >
                   Visit Athena LMS
                   <ArrowRight className="h-4 w-4" />

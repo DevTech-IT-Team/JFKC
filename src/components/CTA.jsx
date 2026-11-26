@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 
 const CtaSection = () => {
   return (
@@ -38,14 +38,14 @@ const CtaSection = () => {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
             <a
               href="tel:+919818238969"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               <Phone className="h-4 w-4" />
               +91 9818238969
             </a>
             <a
               href="mailto:info@jfknowledge.com"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               <Mail className="h-4 w-4" />
               info@jfknowledge.com
@@ -77,7 +77,7 @@ const CtaSection = () => {
             </a> */}
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-orange-200 bg-white px-7 py-4 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-orange-200 bg-white px-7 py-4 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50"
             >
               Contact Us
             </Link>

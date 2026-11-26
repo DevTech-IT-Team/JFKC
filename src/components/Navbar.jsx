@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  ChevronDown, 
-  Menu, 
-  X, 
-  GraduationCap, 
-  BookOpen, 
-  Sparkles, 
-  Cpu, 
-  ArrowRight 
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -323,7 +314,7 @@ const Navbar = () => {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-full transition-colors focus:outline-none ${
+              className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors focus:outline-none ${
                 solid
                   ? 'text-gray-700 hover:bg-gray-100'
                   : 'text-white hover:bg-white/10'

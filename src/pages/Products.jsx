@@ -11,11 +11,11 @@ import {
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { seo } from '../data/seo';
-import athenaLmsImage from '../assets/athena_dash.png';
-import ebookImage from '../assets/ebook.png';
-import webstudioImage from '../assets/webstudio.png';
-import virtualStudioImage from '../assets/vi.png';
-import chatbot from '../assets/chatbot.png';
+import athenaLmsImage from '../assets/athena_dash.webp';
+import ebookImage from '../assets/ebook.webp';
+import webstudioImage from '../assets/webstudio.webp';
+import virtualStudioImage from '../assets/vi.webp';
+import chatbot from '../assets/chatbot.webp';
 
 const products = [
   {
@@ -86,7 +86,7 @@ const ProductCard = ({ item, index }) => {
   const Icon = item.Icon;
   const num = String(index + 1).padStart(2, '0');
   const linkClass =
-    'mt-4 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors';
+    'mt-4 inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors';
 
   const cta = item.href ? (
     <a
@@ -96,7 +96,7 @@ const ProductCard = ({ item, index }) => {
       className={`${linkClass} bg-orange-500 text-white hover:bg-orange-400`}
     >
       {item.cta}
-      <ArrowUpRight className="h-3.5 w-3.5" />
+      <ArrowUpRight className="h-4 w-4" />
     </a>
   ) : (
     <span className={`${linkClass} cursor-default bg-slate-100 text-slate-500 ring-1 ring-slate-200`}>
@@ -106,17 +106,21 @@ const ProductCard = ({ item, index }) => {
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_16px_40px_-24px_rgba(15,23,42,0.35)] ring-1 ring-orange-200/70">
-      <div className="relative overflow-hidden bg-white">
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
         <img
           src={item.image}
           alt={item.name}
-          className="block h-auto w-full"
+          className="block h-full w-full object-cover"
+          width={600}
+          height={375}
+          loading="lazy"
+          decoding="async"
         />
-        <span className="absolute left-4 top-4 rounded-full bg-orange-500/95 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
+        <span className="absolute left-4 top-4 rounded-full bg-orange-500/95 px-2.5 py-1 text-xs font-bold tracking-wider text-white">
           {num}
         </span>
         {!item.href && (
-          <span className="absolute right-4 top-4 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold tracking-wider text-orange-600">
+          <span className="absolute right-4 top-4 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold tracking-wider text-orange-600">
             Coming soon
           </span>
         )}
@@ -164,7 +168,7 @@ const Products = () => {
               LMS, e-books, studios, and AI tools — built to create, deliver, and
               scale learning.
             </p>
-            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase sm:text-[0.7rem]">
+            <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-orange-400 uppercase">
               LMS <span className="mx-2 text-orange-400/50">•</span> Studio{' '}
               <span className="mx-2 text-orange-400/50">•</span> AI
             </p>
