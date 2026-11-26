@@ -1,8 +1,8 @@
 export const seo = {
   home: {
-    title: 'Custom eLearning Company in India | JF Knowledge Centre',
+    title: 'Custom eLearning Solutions & LMS | JF Knowledge Centre',
     description:
-      'JF Knowledge Centre builds custom eLearning, instructional design, immersive learning and LMS solutions for corporate teams in India and worldwide.',
+      'JF Knowledge Centre builds custom eLearning, instructional design, immersive learning and LMS solutions for corporate teams in the US, UK, Gulf and worldwide.',
     keywords:
       'JF Knowledge Centre, e-learning solutions, LMS development, digital learning, instructional design, corporate training',
     path: '/',

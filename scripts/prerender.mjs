@@ -27,6 +27,16 @@ const outputFile = (route) => {
   return path.join(distDir, route.replace(/^\//, ''), 'index.html');
 };
 
+// Vite preview (and `try_files $uri.html`) resolve `/about` to `about.html`.
+// The directory index above is what `/about/` already serves. Same document,
+// same canonical, so slashless sitemap URLs are not rewritten to the homepage.
+const flatFile = (route) => {
+  if (route === '/') return null;
+  const rel = route.replace(/^\//, '');
+  if (!rel || rel.endsWith('/')) return null;
+  return path.join(distDir, `${rel}.html`);
+};
+
 const readMeta = (html, attribute, key) => {
   const tags = html.match(/<meta\b[^>]*>/gi) || [];
   for (const tag of tags) {
@@ -192,6 +202,11 @@ const main = async () => {
       const file = outputFile(route);
       await mkdir(path.dirname(file), { recursive: true });
       await writeFile(file, document);
+      const flat = flatFile(route);
+      if (flat) {
+        await mkdir(path.dirname(flat), { recursive: true });
+        await writeFile(flat, document);
+      }
       reports.push(verifyRoute(route, document, seenTitles));
       process.stdout.write(`prerendered ${route}\n`);
     }
