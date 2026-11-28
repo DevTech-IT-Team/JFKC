@@ -5,6 +5,7 @@ import { getIndustryBySlug, industries } from '../data/industries';
 import CTA from '../components/CTA';
 import SEO from '../components/SEO';
 import { getIndustrySeo } from '../data/seo';
+import { industryContent } from '../data/industryContent';
 
 const IndustryDetail = () => {
   const { slug } = useParams();
@@ -15,11 +16,31 @@ const IndustryDetail = () => {
     return <Navigate to="/portfolio" replace />;
   }
 
+  const extra = industryContent[slug];
+  const faqSchema = extra
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: extra.faqs.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
+        })),
+      }
+    : null;
+
   const others = industries.filter((item) => item.slug !== industry.slug);
 
   return (
     <main className="min-h-screen bg-white font-[family-name:var(--font-display)]">
-      <SEO {...metadata} breadcrumbLabel={industry.name} />
+      <SEO
+        {...metadata}
+        breadcrumbLabel={industry.name}
+        {...(faqSchema ? { jsonLd: faqSchema } : {})}
+      />
       {/* Hero with image backdrop */}
       <section className="relative min-h-[52svh] overflow-hidden bg-[#0c1220] pt-28 sm:min-h-[56svh] sm:pt-32">
         <img
@@ -115,6 +136,70 @@ const IndustryDetail = () => {
           </div>
         </div>
       </section>
+
+      {extra ? (
+        <section className="relative border-t border-slate-100 py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <div className="mb-3 flex items-center gap-3">
+                <span className="h-px w-10 bg-orange-400/70" aria-hidden="true" />
+                <p className="text-xs font-bold tracking-[0.2em] text-orange-500 uppercase">
+                  In detail
+                </p>
+              </div>
+              <h2 className="text-2xl tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug">
+                {extra.heading}
+              </h2>
+              {extra.intro.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="mt-5 text-base leading-relaxed text-slate-600 sm:text-[1.05rem]"
+                >
+                  {paragraph}
+                </p>
+              ))}
+
+              <h3 className="mt-10 text-xl tracking-tight text-slate-900 sm:text-2xl">
+                {extra.topicsTitle}
+              </h3>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-slate-600 marker:text-orange-500 sm:text-[1.05rem]">
+                {extra.topics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
+
+              <h3 className="mt-10 text-xl tracking-tight text-slate-900 sm:text-2xl">
+                {extra.formatsTitle}
+              </h3>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-slate-600 marker:text-orange-500 sm:text-[1.05rem]">
+                {extra.formats.map((format) => (
+                  <li key={format}>{format}</li>
+                ))}
+              </ul>
+
+              {extra.note ? (
+                <p className="mt-8 text-sm leading-relaxed text-slate-500">{extra.note}</p>
+              ) : null}
+
+              <h2 className="mt-14 text-2xl tracking-tight text-slate-900 sm:text-3xl">
+                Frequently Asked Questions
+              </h2>
+              <div className="mt-6 divide-y divide-slate-200 border-t border-slate-200">
+                {extra.faqs.map((item) => (
+                  <details key={item.q} className="group py-4">
+                    <summary className="cursor-pointer text-base font-semibold text-slate-900 marker:text-orange-500">
+                      {item.q}
+                    </summary>
+                    <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-[1.05rem]">
+                      {item.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* More industries — infinite autoscroll */}
       <section className="relative overflow-hidden border-t border-slate-100 bg-slate-50 py-14 sm:py-16 lg:py-20">
