@@ -4,6 +4,8 @@ import hybridModelBanner from '../assets/blogs/How the JFKC Hybrid Model Works.w
 import delayedReportingBanner from '../assets/jfkc blog banner 23 oct.webp';
 import customLearningBanner from '../assets/JFKC blog banner 6 nov (2).webp';
 import alignTrainingBanner from '../assets/blogs/10_nov_blog.webp';
+import customizeShelfBanner from '../assets/blogs/customize-off-the-shelf-elearning.webp';
+import monthEndCloseBanner from '../assets/blogs/month-end-close-checklist.webp';
 
 export const blogCategories = [
   'Bookkeeping',
@@ -2533,6 +2535,401 @@ export const blogs = [
           {
             label: 'U.S. Government Accountability Office — Artificial Intelligence: Use and Oversight in Financial Services',
             href: 'https://www.gao.gov/products/gao-25-107197',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'customize-off-the-shelf-elearning',
+    title: 'How to Customize Off-the-Shelf eLearning Courses for Your Team',
+    excerpt:
+      "Bought a ready-made eLearning course that doesn't quite fit? A practical guide to customizing off-the-shelf training: branding, scenarios, policies, localization and LMS setup.",
+    subtitle:
+      'This guide covers what you can change, in what order, and when customization stops being worth it.',
+    category: 'E-Learning',
+    date: 'December 2, 2026',
+    readTime: '6 min',
+    image: customizeShelfBanner,
+    imageAlt:
+      'How to Customize Off-the-Shelf eLearning Courses for Your Team — JF Knowledge Centre',
+    metaTitle: 'How to Customize Off-the-Shelf eLearning Courses | JFKC',
+    metaDescription:
+      "Bought a ready-made eLearning course that doesn't quite fit? A practical guide to customizing off-the-shelf training: branding, scenarios, policies, localization and LMS setup.",
+    metaKeywords:
+      'customize off the shelf elearning, off the shelf elearning content, off the shelf training courses, tailor elearning courses, adapt ready-made training',
+    cta: 'Contact us',
+    ctaLink: '/contact',
+    body: [
+      {
+        type: 'p',
+        text: "Off-the-shelf eLearning is a sensible starting point. Ready-made courses on topics like compliance, workplace safety, customer service or software basics can be rolled out quickly and cost less than building from scratch. The catch is fit. A generic course uses generic examples, generic policies and someone else's look and feel, and learners notice.",
+      },
+      {
+        type: 'p',
+        text: 'The good news is that you rarely have to choose between "use it as-is" and "rebuild everything". Most ready-made courses can be adapted so they feel like your training. This guide covers what you can change, in what order, and when customization stops being worth it. If you are still deciding between the two approaches, start with our comparison of [custom eLearning vs off-the-shelf training](/blog/custom-e-learning-vs-off-the-shelf-training).',
+      },
+      { type: 'h2', text: 'First, check what the licence allows' },
+      {
+        type: 'p',
+        text: 'Before planning any changes, confirm what you are allowed to edit. Off-the-shelf content usually arrives in one of three forms:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Locked packages (for example a SCORM or xAPI file you can upload but not open). You can change how it is delivered, but not what is inside.',
+          'Editable source files from an authoring tool. You can change text, images, audio and structure.',
+          'Template libraries designed to be rebranded and rewritten.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Read the licence for limits on editing, translating, the number of learners and use after the subscription ends. Many customization plans fail simply because the source files were never part of the purchase.',
+      },
+      { type: 'h2', text: 'Level 1: Branding and look and feel' },
+      {
+        type: 'p',
+        text: 'The quickest win is making the course look like it belongs to your organisation:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Replace the logo, colours and fonts with your brand set.',
+          'Swap stock images for photos of your own workplace, uniforms and equipment where possible.',
+          'Add a short branded intro screen that explains why this course matters at your company.',
+          'Match button labels and navigation to what learners already see in your other training.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Branding alone will not make content more relevant, but it removes the "this was bought in" feeling that can lower attention from the first screen.',
+      },
+      { type: 'h2', text: 'Level 2: Your policies, processes and terminology' },
+      {
+        type: 'p',
+        text: 'This is where off-the-shelf courses most often fall short. A generic course might describe a reporting process, an escalation path or a safety rule that does not match yours. Learners then have to translate it in their heads, or worse, learn the wrong steps.',
+      },
+      {
+        type: 'p',
+        text: 'Go through the course with a subject matter expert and mark every place where:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'a policy, threshold or rule differs from your own;',
+          'a job title, team name or system name is different from what your people use;',
+          'a process step is missing, extra, or in a different order.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Then update the text, add a short "how we do it here" screen after generic sections, or link to your internal policy document. Keep a simple change log so you know what to re-check when the vendor releases an update.',
+      },
+      { type: 'h2', text: 'Level 3: Scenarios and examples that match real jobs' },
+      {
+        type: 'p',
+        text: 'People learn faster when the situations on screen look like their own day. Replace generic scenarios with ones drawn from your workplace:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'a retail course that uses your store layout and product categories;',
+          'a finance or BFSI course that uses the documents and approvals your teams handle;',
+          'a logistics course built around your warehouse or delivery routines;',
+          'a healthcare course that reflects your clinical workflows.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Branching scenarios, where the learner chooses a response and sees the result, are especially effective here. Even two or three well-chosen scenarios can make a generic course feel written for your team.',
+      },
+      { type: 'h2', text: 'Level 4: Assessments that test what matters' },
+      {
+        type: 'p',
+        text: 'Ready-made quizzes tend to check recall of general facts. Rewrite or add questions so they test the decisions your people actually make. Good questions describe a short situation and ask what the learner would do next. Set pass marks and retake rules that match how important the topic is for your organisation.',
+      },
+      { type: 'h2', text: 'Level 5: Localization for global teams' },
+      {
+        type: 'p',
+        text: 'If your teams work across regions, translation is only part of the job. Localization also covers:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'examples, names and currencies that make sense in each market;',
+          'local regulations where they differ;',
+          'right-to-left layouts for languages such as Arabic;',
+          'voice-over or subtitles, and on-screen text that still fits after translation.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Plan localization after the content is final in one language, so you are not translating the same changes several times.',
+      },
+      { type: 'h2', text: 'Level 6: Delivery, tracking and follow-up in your LMS' },
+      {
+        type: 'p',
+        text: 'How the course is delivered matters as much as what is in it. When you load it into your learning management system:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'group it with your own short modules, policies or job aids into a learning path;',
+          'assign it by role, team or location instead of to everyone;',
+          'set reminders and due dates that fit the topic;',
+          'report on completion and quiz results by group, so managers can follow up.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'An LMS such as [Athena LMS](https://lmsathena.com/) lets you combine bought-in courses with your own content in one learner journey and track results in one place.',
+      },
+      { type: 'h2', text: 'When customization stops making sense' },
+      {
+        type: 'p',
+        text: 'Customization has limits. It may be time to build custom content instead when:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'you are changing most of the screens and scenarios anyway;',
+          'the topic is central to how your business competes, such as your own products, services or methods;',
+          'the licence does not allow the edits you need;',
+          'updates from the vendor keep overwriting your changes.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'In those cases a custom course, designed around your goals from the start, is often simpler to maintain. Our guide to [custom eLearning solutions that align training with business goals](/blog/custom-e-learning-solutions-align-training-with-business-goals) explains how that process works.',
+      },
+      { type: 'h2', text: 'A simple order of work' },
+      {
+        type: 'ul',
+        items: [
+          '1. Confirm the licence and get source files if you need them.',
+          '2. Review the course with a subject matter expert and list required changes.',
+          '3. Fix policies, processes and terminology first.',
+          '4. Add your scenarios and rewrite key assessments.',
+          '5. Apply branding.',
+          '6. Localize once the master version is approved.',
+          '7. Set up delivery, assignments and reporting in your LMS.',
+          '8. Collect learner feedback after the first run and adjust.',
+        ],
+      },
+      { type: 'h2', text: 'Need help adapting ready-made training?' },
+      {
+        type: 'p',
+        text: 'JF Knowledge Centre designs and develops eLearning for teams across industries, from adapting existing courses to building new ones. If you have off-the-shelf content that does not quite fit, [contact us](/contact) and share one module. We will suggest what to change and what to keep.',
+      },
+      { type: 'h2', text: 'Frequently Asked Questions' },
+      {
+        type: 'faq',
+        items: [
+          {
+            q: 'Can you customize off-the-shelf eLearning courses?',
+            a: 'Usually, yes. How much you can change depends on the licence and on whether you have editable source files. Locked packages can be wrapped with your own intro, policies and follow-up modules, while editable files can be rewritten, rebranded and localized.',
+          },
+          {
+            q: 'What should be customized first in a ready-made course?',
+            a: 'Start with anything that is wrong for your organisation, such as policies, process steps and terminology. Branding and new scenarios come next, then localization.',
+          },
+          {
+            q: 'Is customizing off-the-shelf training cheaper than building a custom course?',
+            a: 'Often, when the changes are limited to branding, policies and a few scenarios. If you end up changing most of the course, building custom content can be simpler to maintain.',
+          },
+          {
+            q: 'Can off-the-shelf courses be translated for global teams?',
+            a: 'If the licence allows it, yes. Good localization also adapts examples, names, currencies and layouts, not just the words.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'month-end-close-checklist',
+    title: 'Month-End Close Checklist for Small Businesses',
+    excerpt:
+      'A practical month-end close checklist for small businesses: bank and card reconciliations, receivables, payables, accruals, payroll, inventory, review and reporting.',
+    subtitle:
+      'The month-end close is the routine of checking, correcting and locking your books for the month that just ended.',
+    category: 'Bookkeeping',
+    date: 'December 5, 2026',
+    readTime: '6 min',
+    image: monthEndCloseBanner,
+    imageAlt: 'Month-End Close Checklist for Small Businesses — JF Knowledge Centre',
+    metaTitle: 'Month-End Close Checklist for Small Businesses | JFKC',
+    metaDescription:
+      'A practical month-end close checklist for small businesses: bank and card reconciliations, receivables, payables, accruals, payroll, inventory, review and reporting.',
+    metaKeywords:
+      'month end close checklist, month end closing process, month end close process steps, small business bookkeeping checklist, monthly accounting close',
+    cta: 'Contact us',
+    ctaLink: '/contact',
+    body: [
+      {
+        type: 'p',
+        text: 'The month-end close is the routine of checking, correcting and locking your books for the month that just ended. Done well, it turns a pile of bank lines, invoices and receipts into numbers you can trust for decisions, tax filings and conversations with lenders or investors. Done late or skipped, it is one of the main reasons [financial reports arrive too late to be useful](/blog/delayed-financial-reporting-ca-ai).',
+      },
+      {
+        type: 'p',
+        text: 'This checklist is written for owner-managed and growing businesses that keep their books in accounting software, with or without an outside bookkeeper or accountant. Adjust it to your business, then use the same list every month.',
+      },
+      { type: 'h2', text: 'Before you start: set up for a repeatable close' },
+      {
+        type: 'ul',
+        items: [
+          'Pick a close calendar. Decide which working day each step happens on, and who does it.',
+          'Use one shared checklist. A simple spreadsheet or task list with a sign-off column for each step is enough.',
+          'Agree a cut-off. Tell your team the date by which receipts, expense claims and supplier invoices for the month must be submitted.',
+          'Keep documents in one place. Receipts, invoices, statements and contracts should be easy to find when a number needs checking.',
+        ],
+      },
+      { type: 'h2', text: 'Step 1: Record everything for the month' },
+      {
+        type: 'ul',
+        items: [
+          'Enter or import all sales invoices issued in the month.',
+          'Enter supplier bills and receipts received by the cut-off.',
+          'Approve and record employee expense claims.',
+          'Make sure cash sales, online payment settlements and refunds are recorded.',
+        ],
+      },
+      { type: 'h2', text: 'Step 2: Reconcile bank, card and payment accounts' },
+      {
+        type: 'p',
+        text: 'Reconcile every account that holds or moves money: bank accounts, credit cards, loan accounts and payment platforms. For each one:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'match the closing balance in your books to the statement;',
+          'clear or explain every unmatched item;',
+          'record bank fees, interest and charges that only appear on the statement;',
+          'check that transfers between your own accounts appear on both sides.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Reconciliations are the backbone of the close. If the cash is right, many other errors become easier to spot.',
+      },
+      { type: 'h2', text: 'Step 3: Review accounts receivable' },
+      {
+        type: 'ul',
+        items: [
+          'Compare the receivables ledger to the balance sheet control account.',
+          'Review the aged receivables report and follow up on overdue invoices.',
+          'Apply customer payments to the right invoices.',
+          "Decide whether any balances are doubtful and need a provision, following your accountant's guidance.",
+        ],
+      },
+      { type: 'h2', text: 'Step 4: Review accounts payable' },
+      {
+        type: 'ul',
+        items: [
+          'Compare the payables ledger to the balance sheet control account.',
+          'Check that every bill received is recorded once, and only once.',
+          'Confirm supplier statements agree with your records for key suppliers.',
+          'Plan upcoming payments so due dates are not missed.',
+        ],
+      },
+      { type: 'h2', text: 'Step 5: Record accruals, prepayments and deferrals' },
+      {
+        type: 'p',
+        text: 'Month-end numbers should reflect the period the income or cost belongs to, not just when cash moved.',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Accruals: costs incurred in the month but not yet billed, such as utilities or contractor work.',
+          'Prepayments: costs paid in advance, such as annual insurance or software subscriptions, spread across the months they cover.',
+          'Deferred income: money received for work or services not yet delivered.',
+          'Depreciation: the monthly charge for equipment and other fixed assets.',
+        ],
+      },
+      { type: 'h2', text: 'Step 6: Payroll and taxes' },
+      {
+        type: 'ul',
+        items: [
+          'Check that payroll for the month is recorded, including employer taxes and contributions.',
+          'Reconcile payroll liability accounts to what was paid or is due.',
+          'Review sales tax, VAT or GST accounts so the balances match what you expect to file.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Rules differ by country and state, so confirm the specifics with a qualified accountant.',
+      },
+      { type: 'h2', text: 'Step 7: Inventory and cost of sales (if you hold stock)' },
+      {
+        type: 'ul',
+        items: [
+          'Count or spot-check stock, or confirm the system quantities.',
+          'Adjust for damaged, obsolete or missing items.',
+          'Make sure cost of sales reflects what was actually sold in the month.',
+        ],
+      },
+      { type: 'h2', text: 'Step 8: Review the numbers' },
+      {
+        type: 'p',
+        text: 'Before you lock the month, look at the results as a whole:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Compare profit and loss to last month and the same month last year. Ask why any line moved a lot.',
+          'Scan the balance sheet for balances that look wrong, such as negative cash, old suspense items or unexplained clearing accounts.',
+          'Check that every balance sheet account has a reconciliation or a short explanation.',
+          'Have someone other than the preparer review and sign off.',
+        ],
+      },
+      { type: 'h2', text: 'Step 9: Close the period and report' },
+      {
+        type: 'ul',
+        items: [
+          'Lock the period in your accounting software so it cannot be changed by accident.',
+          'Produce your standard reports: profit and loss, balance sheet and cash flow, plus any KPIs you track.',
+          'Write two or three lines on what changed and why. This short note is often what owners and managers read first.',
+          "File the reports and the signed checklist with the month's documents.",
+        ],
+      },
+      { type: 'h2', text: 'Common reasons the close runs late' },
+      {
+        type: 'ul',
+        items: [
+          'Receipts and bills arrive after the cut-off.',
+          'Bank feeds break and no one notices until month end.',
+          'Reconciliations are left until the end instead of being done weekly.',
+          'The process lives in one person\'s head, so it stalls when they are away.',
+          'Questions to the owner or managers sit unanswered.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Most of these are fixed by a clear calendar, a shared checklist and steady weekly bookkeeping, so month end is a review rather than a rush.',
+      },
+      { type: 'h2', text: 'When to bring in help' },
+      {
+        type: 'p',
+        text: 'If the close keeps slipping, or the books need catching up before a tax deadline, a loan application or a fundraise, outside support can help. Our guide to [CPA services for small businesses](/blog/cpa-services-for-small-businesses) explains what an accountant can take on, and our [CPA and bookkeeping services](/services/cpa-bookkeeping) page shows how JF Knowledge Centre supports businesses with bookkeeping and month-end reporting under qualified accountant oversight. [Contact us](/contact) to talk through your current close.',
+      },
+      { type: 'h2', text: 'Frequently Asked Questions' },
+      {
+        type: 'faq',
+        items: [
+          {
+            q: 'What is a month-end close?',
+            a: 'It is the monthly process of recording all transactions, reconciling accounts, making adjustments such as accruals and depreciation, reviewing the results and locking the period so the financial reports can be relied on.',
+          },
+          {
+            q: 'What should be on a month-end close checklist?',
+            a: 'At a minimum: recording all invoices, bills and expenses; reconciling bank, card and payment accounts; reviewing receivables and payables; posting accruals, prepayments and depreciation; checking payroll and tax accounts; reviewing the reports; and locking the period.',
+          },
+          {
+            q: 'How long should a month-end close take?',
+            a: 'It depends on the size and complexity of the business and how up to date the books are during the month. Keeping bookkeeping current every week usually makes the close much shorter.',
+          },
+          {
+            q: 'Who should do the month-end close in a small business?',
+            a: 'The owner, an in-house bookkeeper or an outside bookkeeping and accounting team can prepare it. Ideally someone other than the preparer reviews and signs off the results.',
           },
         ],
       },
